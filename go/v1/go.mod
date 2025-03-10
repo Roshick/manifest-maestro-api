@@ -1,4 +1,4 @@
-module github.com/Roshick/manifest-maestro-api/openapi
+module github.com/Roshick/manifest-maestro-api
 
 go 1.18
 
