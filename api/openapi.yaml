@@ -1,0 +1,636 @@
+openapi: 3.0.3
+info:
+  contact:
+    email: e.rieb@posteo.de
+    name: Elias R.
+    url: https://github.com/Roshick
+  description: Renders Kubernetes manifests with the help of various tools such as
+    Helm and Kustomize.
+  license:
+    name: Copyright (c) 2025 Elias R.
+    url: https://github.com/Roshick
+  title: Manifest Maestro
+  version: v1
+servers:
+- url: /
+tags:
+- name: Helm
+- name: Kustomize
+- name: Management
+paths:
+  /rest/api/v1/helm/actions/list-charts:
+    post:
+      description: |-
+        Lists all Helm Charts contained in the given repository.
+
+        Service needs read permission on given repository.
+      operationId: postHelmListChartAction
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HelmListChartsAction'
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HelmListChartsActionResponse'
+          description: Success
+        "400":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Bad request
+        "500":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
+        "502":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Upstream failed to respond
+      summary: List all Helm Charts
+      tags:
+      - Helm
+  /rest/api/v1/helm/actions/get-chart-metadata:
+    post:
+      description: |-
+        Retrieves metadata of chart contained in the given repository.
+
+        Service needs read permission on given repository.
+      operationId: postHelmGetChartMetadataAction
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HelmGetChartMetadataAction'
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HelmGetChartMetadataActionResponse'
+          description: Success
+        "400":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Bad request
+        "422":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Repository is in an unprocessable state
+        "500":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
+        "502":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Upstream failed to respond
+      summary: Get Helm Chart Metadata
+      tags:
+      - Helm
+  /rest/api/v1/helm/actions/render-chart:
+    post:
+      description: |-
+        Renders Kubernetes manifests based on Helm chart provided in a repository.
+
+        Service needs read permission on given repository.
+      operationId: postHelmRenderAction
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HelmRenderChartAction'
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HelmRenderChartActionResponse'
+          description: Success
+        "400":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Bad request
+        "422":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Repository is in an unprocessable state
+        "500":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
+        "502":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Upstream failed to respond
+      summary: Render Helm Chart
+      tags:
+      - Helm
+  /rest/api/v1/kustomize/actions/render-kustomization:
+    post:
+      description: |-
+        Renders Kubernetes manifests based on Kustomize Kustomization provided in repository.
+
+        Service needs read permission on given repository.
+      operationId: postKustomizeRenderKustomizationAction
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/KustomizeRenderKustomizationAction'
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/KustomizeRenderKustomizationActionResponse'
+          description: Success
+        "400":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Bad request
+        "422":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Repository is in an unprocessable state
+        "500":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
+        "502":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Upstream failed to respond
+      summary: Render Kustomize Kustomization
+      tags:
+      - Kustomize
+  /health/readiness:
+    get:
+      operationId: getReadinessHealth
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+          description: OK
+        "500":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
+      tags:
+      - Management
+  /health/liveness:
+    get:
+      operationId: getLivenessHealth
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+          description: OK
+        "500":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
+      tags:
+      - Management
+components:
+  schemas:
+    HealthResponse:
+      example:
+        description: description
+        status: status
+      properties:
+        description:
+          type: string
+        status:
+          type: string
+      type: object
+    ErrorResponse:
+      example:
+        instance: instance
+        detail: detail
+        type: type
+        title: title
+        status: 0.8008281904610115
+      properties:
+        type:
+          type: string
+        title:
+          type: string
+        status:
+          type: number
+        detail:
+          type: string
+        instance:
+          type: string
+      type: object
+    HelmListChartsAction:
+      example:
+        reference:
+          repositoryType: repositoryType
+          repositoryURL: repositoryURL
+      properties:
+        reference:
+          $ref: '#/components/schemas/HelmRepositoryReference'
+      required:
+      - reference
+      type: object
+    HelmListChartsActionResponse:
+      example:
+        items:
+        - "{}"
+        - "{}"
+      properties:
+        items:
+          items:
+            type: object
+          type: array
+      required:
+      - items
+      type: object
+    HelmGetChartMetadataAction:
+      example:
+        reference:
+          chartName: chartName
+          chartVersion: chartVersion
+          repositoryType: repositoryType
+          repositoryURL: repositoryURL
+      properties:
+        reference:
+          $ref: '#/components/schemas/HelmChartReference'
+      required:
+      - reference
+      type: object
+    HelmGetChartMetadataActionResponse:
+      example:
+        defaultValues: "{}"
+      properties:
+        defaultValues:
+          type: object
+      required:
+      - defaultValues
+      type: object
+    HelmRenderChartAction:
+      example:
+        reference:
+          chartName: chartName
+          chartVersion: chartVersion
+          repositoryType: repositoryType
+          repositoryURL: repositoryURL
+        parameters:
+          stringValuesFlat:
+          - stringValuesFlat
+          - stringValuesFlat
+          valueFiles:
+          - valueFiles
+          - valueFiles
+          releaseName: releaseName
+          values:
+            key: values
+          includeHooks: true
+          complexValues: "{}"
+          stringValues:
+            key: stringValues
+          valuesFlat:
+          - valuesFlat
+          - valuesFlat
+          kubeVersion: kubeVersion
+          apiVersions:
+          - apiVersions
+          - apiVersions
+          namespace: namespace
+          includeCRDs: true
+          ignoreMissingValueFiles: false
+      properties:
+        reference:
+          $ref: '#/components/schemas/HelmChartReference'
+        parameters:
+          $ref: '#/components/schemas/HelmRenderParameters'
+      required:
+      - reference
+      type: object
+    HelmRenderChartActionResponse:
+      example:
+        metadata:
+          helmVersion: helmVersion
+          kubeVersion: kubeVersion
+          mergedValues: "{}"
+          releaseName: releaseName
+          apiVersions:
+          - apiVersions
+          - apiVersions
+          namespace: namespace
+        manifests:
+        - source: source
+          content: "{}"
+        - source: source
+          content: "{}"
+      properties:
+        manifests:
+          items:
+            $ref: '#/components/schemas/Manifest'
+          type: array
+        metadata:
+          $ref: '#/components/schemas/HelmRenderMetadata'
+      type: object
+    KustomizeRenderKustomizationAction:
+      example:
+        reference:
+          path: path
+          gitReference: gitReference
+          repositoryType: repositoryType
+          repositoryURL: repositoryURL
+        parameters:
+          manifestInjections:
+          - fileName: fileName
+            manifests:
+            - source: source
+              content: "{}"
+            - source: source
+              content: "{}"
+          - fileName: fileName
+            manifests:
+            - source: source
+              content: "{}"
+            - source: source
+              content: "{}"
+      properties:
+        reference:
+          $ref: '#/components/schemas/KustomizationReference'
+        parameters:
+          $ref: '#/components/schemas/KustomizeRenderParameters'
+      required:
+      - reference
+      type: object
+    KustomizeRenderKustomizationActionResponse:
+      example:
+        manifests:
+        - source: source
+          content: "{}"
+        - source: source
+          content: "{}"
+      properties:
+        manifests:
+          items:
+            $ref: '#/components/schemas/Manifest'
+          type: array
+      type: object
+    HelmRepositoryReference:
+      oneOf:
+      - $ref: '#/components/schemas/HelmChartRepositoryReference'
+      - $ref: '#/components/schemas/GitRepositoryReference'
+    HelmChartRepositoryReference:
+      example:
+        repositoryType: repositoryType
+        repositoryURL: repositoryURL
+      properties:
+        repositoryType:
+          type: string
+        repositoryURL:
+          type: string
+      required:
+      - repositoryType
+      - repositoryURL
+      type: object
+    GitRepositoryReference:
+      properties:
+        repositoryType:
+          type: string
+        repositoryURL:
+          type: string
+        gitReference:
+          type: string
+      required:
+      - gitReference
+      - repositoryType
+      - repositoryURL
+      type: object
+    HelmChartReference:
+      oneOf:
+      - $ref: '#/components/schemas/HelmChartRepositoryChartReference'
+      - $ref: '#/components/schemas/GitRepositoryPathReference'
+    HelmChartRepositoryChartReference:
+      allOf:
+      - $ref: '#/components/schemas/HelmChartRepositoryReference'
+      - properties:
+          chartName:
+            type: string
+          chartVersion:
+            type: string
+        required:
+        - chartName
+      example:
+        chartName: chartName
+        chartVersion: chartVersion
+        repositoryType: repositoryType
+        repositoryURL: repositoryURL
+    KustomizationReference:
+      oneOf:
+      - $ref: '#/components/schemas/GitRepositoryPathReference'
+    GitRepositoryPathReference:
+      allOf:
+      - $ref: '#/components/schemas/GitRepositoryReference'
+      - properties:
+          path:
+            type: string
+      example:
+        path: path
+        gitReference: gitReference
+        repositoryType: repositoryType
+        repositoryURL: repositoryURL
+    Manifest:
+      example:
+        source: source
+        content: "{}"
+      properties:
+        source:
+          type: string
+        content:
+          type: object
+      required:
+      - content
+      type: object
+    HelmRenderMetadata:
+      example:
+        helmVersion: helmVersion
+        kubeVersion: kubeVersion
+        mergedValues: "{}"
+        releaseName: releaseName
+        apiVersions:
+        - apiVersions
+        - apiVersions
+        namespace: namespace
+      properties:
+        releaseName:
+          type: string
+        namespace:
+          type: string
+        apiVersions:
+          items:
+            type: string
+          type: array
+        kubeVersion:
+          type: string
+        helmVersion:
+          type: string
+        mergedValues:
+          type: object
+      required:
+      - apiVersions
+      - helmVersion
+      - kubeVersion
+      - mergedValues
+      - namespace
+      - releaseName
+      type: object
+    HelmRenderParameters:
+      example:
+        stringValuesFlat:
+        - stringValuesFlat
+        - stringValuesFlat
+        valueFiles:
+        - valueFiles
+        - valueFiles
+        releaseName: releaseName
+        values:
+          key: values
+        includeHooks: true
+        complexValues: "{}"
+        stringValues:
+          key: stringValues
+        valuesFlat:
+        - valuesFlat
+        - valuesFlat
+        kubeVersion: kubeVersion
+        apiVersions:
+        - apiVersions
+        - apiVersions
+        namespace: namespace
+        includeCRDs: true
+        ignoreMissingValueFiles: false
+      properties:
+        releaseName:
+          type: string
+        namespace:
+          type: string
+        kubeVersion:
+          type: string
+        apiVersions:
+          items:
+            type: string
+          type: array
+        valueFiles:
+          items:
+            type: string
+          type: array
+        values:
+          additionalProperties:
+            type: string
+          type: object
+        valuesFlat:
+          items:
+            type: string
+          type: array
+        stringValues:
+          additionalProperties:
+            type: string
+          type: object
+        stringValuesFlat:
+          items:
+            type: string
+          type: array
+        complexValues:
+          type: object
+        includeCRDs:
+          default: true
+          type: boolean
+        includeHooks:
+          default: true
+          type: boolean
+        ignoreMissingValueFiles:
+          default: false
+          type: boolean
+      type: object
+    KustomizeRenderParameters:
+      example:
+        manifestInjections:
+        - fileName: fileName
+          manifests:
+          - source: source
+            content: "{}"
+          - source: source
+            content: "{}"
+        - fileName: fileName
+          manifests:
+          - source: source
+            content: "{}"
+          - source: source
+            content: "{}"
+      properties:
+        manifestInjections:
+          items:
+            $ref: '#/components/schemas/KustomizeManifestInjection'
+          type: array
+      type: object
+    KustomizeManifestInjection:
+      example:
+        fileName: fileName
+        manifests:
+        - source: source
+          content: "{}"
+        - source: source
+          content: "{}"
+      properties:
+        fileName:
+          type: string
+        manifests:
+          items:
+            $ref: '#/components/schemas/Manifest'
+          type: array
+      required:
+      - fileName
+      - manifests
+      type: object

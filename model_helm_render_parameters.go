@@ -25,9 +25,9 @@ type HelmRenderParameters struct {
 	KubeVersion *string `json:"kubeVersion,omitempty"`
 	ApiVersions []string `json:"apiVersions,omitempty"`
 	ValueFiles []string `json:"valueFiles,omitempty"`
-	Values map[string]string `json:"values,omitempty"`
+	Values *map[string]string `json:"values,omitempty"`
 	ValuesFlat []string `json:"valuesFlat,omitempty"`
-	StringValues map[string]string `json:"stringValues,omitempty"`
+	StringValues *map[string]string `json:"stringValues,omitempty"`
 	StringValuesFlat []string `json:"stringValuesFlat,omitempty"`
 	ComplexValues map[string]interface{} `json:"complexValues,omitempty"`
 	IncludeCRDs *bool `json:"includeCRDs,omitempty"`
@@ -227,23 +227,22 @@ func (o *HelmRenderParameters) SetValueFiles(v []string) {
 	o.ValueFiles = v
 }
 
-// GetValues returns the Values field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetValues returns the Values field value if set, zero value otherwise.
 func (o *HelmRenderParameters) GetValues() map[string]string {
-	if o == nil {
+	if o == nil || IsNil(o.Values) {
 		var ret map[string]string
 		return ret
 	}
-	return o.Values
+	return *o.Values
 }
 
 // GetValuesOk returns a tuple with the Values field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HelmRenderParameters) GetValuesOk() (*map[string]string, bool) {
 	if o == nil || IsNil(o.Values) {
 		return nil, false
 	}
-	return &o.Values, true
+	return o.Values, true
 }
 
 // HasValues returns a boolean if a field has been set.
@@ -257,7 +256,7 @@ func (o *HelmRenderParameters) HasValues() bool {
 
 // SetValues gets a reference to the given map[string]string and assigns it to the Values field.
 func (o *HelmRenderParameters) SetValues(v map[string]string) {
-	o.Values = v
+	o.Values = &v
 }
 
 // GetValuesFlat returns the ValuesFlat field value if set, zero value otherwise.
@@ -292,23 +291,22 @@ func (o *HelmRenderParameters) SetValuesFlat(v []string) {
 	o.ValuesFlat = v
 }
 
-// GetStringValues returns the StringValues field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetStringValues returns the StringValues field value if set, zero value otherwise.
 func (o *HelmRenderParameters) GetStringValues() map[string]string {
-	if o == nil {
+	if o == nil || IsNil(o.StringValues) {
 		var ret map[string]string
 		return ret
 	}
-	return o.StringValues
+	return *o.StringValues
 }
 
 // GetStringValuesOk returns a tuple with the StringValues field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HelmRenderParameters) GetStringValuesOk() (*map[string]string, bool) {
 	if o == nil || IsNil(o.StringValues) {
 		return nil, false
 	}
-	return &o.StringValues, true
+	return o.StringValues, true
 }
 
 // HasStringValues returns a boolean if a field has been set.
@@ -322,7 +320,7 @@ func (o *HelmRenderParameters) HasStringValues() bool {
 
 // SetStringValues gets a reference to the given map[string]string and assigns it to the StringValues field.
 func (o *HelmRenderParameters) SetStringValues(v map[string]string) {
-	o.StringValues = v
+	o.StringValues = &v
 }
 
 // GetStringValuesFlat returns the StringValuesFlat field value if set, zero value otherwise.
@@ -510,13 +508,13 @@ func (o HelmRenderParameters) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ValueFiles) {
 		toSerialize["valueFiles"] = o.ValueFiles
 	}
-	if o.Values != nil {
+	if !IsNil(o.Values) {
 		toSerialize["values"] = o.Values
 	}
 	if !IsNil(o.ValuesFlat) {
 		toSerialize["valuesFlat"] = o.ValuesFlat
 	}
-	if o.StringValues != nil {
+	if !IsNil(o.StringValues) {
 		toSerialize["stringValues"] = o.StringValues
 	}
 	if !IsNil(o.StringValuesFlat) {

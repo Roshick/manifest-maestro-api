@@ -6,7 +6,7 @@
     "generators": {
       "v1": {
         "generatorName": "go",
-        "inputSpec": "./v1.yaml",
+        "inputSpec": "./specs/v1.yaml",
         "output": "./",
         "additionalProperties": {
           "disallowAdditionalPropertiesIfNotPresent": false

@@ -9,9 +9,9 @@ Name | Type | Description | Notes
 **KubeVersion** | Pointer to **string** |  | [optional] 
 **ApiVersions** | Pointer to **[]string** |  | [optional] 
 **ValueFiles** | Pointer to **[]string** |  | [optional] 
-**Values** | Pointer to  |  | [optional] 
+**Values** | Pointer to **map[string]string** |  | [optional] 
 **ValuesFlat** | Pointer to **[]string** |  | [optional] 
-**StringValues** | Pointer to  |  | [optional] 
+**StringValues** | Pointer to **map[string]string** |  | [optional] 
 **StringValuesFlat** | Pointer to **[]string** |  | [optional] 
 **ComplexValues** | Pointer to **map[string]interface{}** |  | [optional] 
 **IncludeCRDs** | Pointer to **bool** |  | [optional] [default to true]
@@ -187,16 +187,6 @@ SetValues sets Values field to given value.
 
 HasValues returns a boolean if a field has been set.
 
-### SetValuesNil
-
-`func (o *HelmRenderParameters) SetValuesNil(b bool)`
-
- SetValuesNil sets the value for Values to be an explicit nil
-
-### UnsetValues
-`func (o *HelmRenderParameters) UnsetValues()`
-
-UnsetValues ensures that no value is present for Values, not even an explicit nil
 ### GetValuesFlat
 
 `func (o *HelmRenderParameters) GetValuesFlat() []string`
@@ -247,16 +237,6 @@ SetStringValues sets StringValues field to given value.
 
 HasStringValues returns a boolean if a field has been set.
 
-### SetStringValuesNil
-
-`func (o *HelmRenderParameters) SetStringValuesNil(b bool)`
-
- SetStringValuesNil sets the value for StringValues to be an explicit nil
-
-### UnsetStringValues
-`func (o *HelmRenderParameters) UnsetStringValues()`
-
-UnsetStringValues ensures that no value is present for StringValues, not even an explicit nil
 ### GetStringValuesFlat
 
 `func (o *HelmRenderParameters) GetStringValuesFlat() []string`
