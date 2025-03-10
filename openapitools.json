@@ -6,13 +6,13 @@
     "generators": {
       "v1": {
         "generatorName": "go",
-        "inputSpec": "./api/v1.yaml",
-        "output": "./go/v1",
+        "inputSpec": "./v1.yaml",
+        "output": "./",
         "additionalProperties": {
           "disallowAdditionalPropertiesIfNotPresent": false
         },
         "gitUserId": "Roshick",
-        "gitRepoId": "manifest-maestro-api/v1"
+        "gitRepoId": "manifest-maestro-api"
       }
     }
   }

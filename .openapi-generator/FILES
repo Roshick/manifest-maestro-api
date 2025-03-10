@@ -1,4 +1,3 @@
-.gitignore
 README.md
 api_helm.go
 api_kustomize.go

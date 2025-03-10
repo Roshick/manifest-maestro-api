@@ -27,7 +27,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/Roshick/manifest-maestro-api/v1"
+	openapiclient "github.com/Roshick/manifest-maestro-api"
 )
 
 func main() {
@@ -93,7 +93,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/Roshick/manifest-maestro-api/v1"
+	openapiclient "github.com/Roshick/manifest-maestro-api"
 )
 
 func main() {
@@ -159,7 +159,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/Roshick/manifest-maestro-api/v1"
+	openapiclient "github.com/Roshick/manifest-maestro-api"
 )
 
 func main() {
