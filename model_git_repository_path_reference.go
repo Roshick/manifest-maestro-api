@@ -3,7 +3,7 @@ Manifest Maestro
 
 Renders Kubernetes manifests with the help of various tools such as Helm and Kustomize.
 
-API version: v1
+API version: v1.2.0
 Contact: e.rieb@posteo.de
 */
 
@@ -21,9 +21,8 @@ var _ MappedNullable = &GitRepositoryPathReference{}
 
 // GitRepositoryPathReference struct for GitRepositoryPathReference
 type GitRepositoryPathReference struct {
-	RepositoryType string `json:"repositoryType"`
 	RepositoryURL string `json:"repositoryURL"`
-	GitReference string `json:"gitReference"`
+	Reference string `json:"reference"`
 	Path *string `json:"path,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -34,11 +33,10 @@ type _GitRepositoryPathReference GitRepositoryPathReference
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGitRepositoryPathReference(repositoryType string, repositoryURL string, gitReference string) *GitRepositoryPathReference {
+func NewGitRepositoryPathReference(repositoryURL string, reference string) *GitRepositoryPathReference {
 	this := GitRepositoryPathReference{}
-	this.RepositoryType = repositoryType
 	this.RepositoryURL = repositoryURL
-	this.GitReference = gitReference
+	this.Reference = reference
 	return &this
 }
 
@@ -48,30 +46,6 @@ func NewGitRepositoryPathReference(repositoryType string, repositoryURL string, 
 func NewGitRepositoryPathReferenceWithDefaults() *GitRepositoryPathReference {
 	this := GitRepositoryPathReference{}
 	return &this
-}
-
-// GetRepositoryType returns the RepositoryType field value
-func (o *GitRepositoryPathReference) GetRepositoryType() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.RepositoryType
-}
-
-// GetRepositoryTypeOk returns a tuple with the RepositoryType field value
-// and a boolean to check if the value has been set.
-func (o *GitRepositoryPathReference) GetRepositoryTypeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.RepositoryType, true
-}
-
-// SetRepositoryType sets field value
-func (o *GitRepositoryPathReference) SetRepositoryType(v string) {
-	o.RepositoryType = v
 }
 
 // GetRepositoryURL returns the RepositoryURL field value
@@ -98,28 +72,28 @@ func (o *GitRepositoryPathReference) SetRepositoryURL(v string) {
 	o.RepositoryURL = v
 }
 
-// GetGitReference returns the GitReference field value
-func (o *GitRepositoryPathReference) GetGitReference() string {
+// GetReference returns the Reference field value
+func (o *GitRepositoryPathReference) GetReference() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.GitReference
+	return o.Reference
 }
 
-// GetGitReferenceOk returns a tuple with the GitReference field value
+// GetReferenceOk returns a tuple with the Reference field value
 // and a boolean to check if the value has been set.
-func (o *GitRepositoryPathReference) GetGitReferenceOk() (*string, bool) {
+func (o *GitRepositoryPathReference) GetReferenceOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.GitReference, true
+	return &o.Reference, true
 }
 
-// SetGitReference sets field value
-func (o *GitRepositoryPathReference) SetGitReference(v string) {
-	o.GitReference = v
+// SetReference sets field value
+func (o *GitRepositoryPathReference) SetReference(v string) {
+	o.Reference = v
 }
 
 // GetPath returns the Path field value if set, zero value otherwise.
@@ -164,9 +138,8 @@ func (o GitRepositoryPathReference) MarshalJSON() ([]byte, error) {
 
 func (o GitRepositoryPathReference) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["repositoryType"] = o.RepositoryType
 	toSerialize["repositoryURL"] = o.RepositoryURL
-	toSerialize["gitReference"] = o.GitReference
+	toSerialize["reference"] = o.Reference
 	if !IsNil(o.Path) {
 		toSerialize["path"] = o.Path
 	}
@@ -183,9 +156,8 @@ func (o *GitRepositoryPathReference) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"repositoryType",
 		"repositoryURL",
-		"gitReference",
+		"reference",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -215,9 +187,8 @@ func (o *GitRepositoryPathReference) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "repositoryType")
 		delete(additionalProperties, "repositoryURL")
-		delete(additionalProperties, "gitReference")
+		delete(additionalProperties, "reference")
 		delete(additionalProperties, "path")
 		o.AdditionalProperties = additionalProperties
 	}

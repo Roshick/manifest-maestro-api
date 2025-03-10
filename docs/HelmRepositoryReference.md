@@ -4,15 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**RepositoryType** | **string** |  | 
 **RepositoryURL** | **string** |  | 
-**GitReference** | **string** |  | 
+**Reference** | **string** |  | 
 
 ## Methods
 
 ### NewHelmRepositoryReference
 
-`func NewHelmRepositoryReference(repositoryType string, repositoryURL string, gitReference string, ) *HelmRepositoryReference`
+`func NewHelmRepositoryReference(repositoryURL string, reference string, ) *HelmRepositoryReference`
 
 NewHelmRepositoryReference instantiates a new HelmRepositoryReference object
 This constructor will assign default values to properties that have it defined,
@@ -26,26 +25,6 @@ will change when the set of required properties is changed
 NewHelmRepositoryReferenceWithDefaults instantiates a new HelmRepositoryReference object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetRepositoryType
-
-`func (o *HelmRepositoryReference) GetRepositoryType() string`
-
-GetRepositoryType returns the RepositoryType field if non-nil, zero value otherwise.
-
-### GetRepositoryTypeOk
-
-`func (o *HelmRepositoryReference) GetRepositoryTypeOk() (*string, bool)`
-
-GetRepositoryTypeOk returns a tuple with the RepositoryType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRepositoryType
-
-`func (o *HelmRepositoryReference) SetRepositoryType(v string)`
-
-SetRepositoryType sets RepositoryType field to given value.
-
 
 ### GetRepositoryURL
 
@@ -67,24 +46,24 @@ and a boolean to check if the value has been set.
 SetRepositoryURL sets RepositoryURL field to given value.
 
 
-### GetGitReference
+### GetReference
 
-`func (o *HelmRepositoryReference) GetGitReference() string`
+`func (o *HelmRepositoryReference) GetReference() string`
 
-GetGitReference returns the GitReference field if non-nil, zero value otherwise.
+GetReference returns the Reference field if non-nil, zero value otherwise.
 
-### GetGitReferenceOk
+### GetReferenceOk
 
-`func (o *HelmRepositoryReference) GetGitReferenceOk() (*string, bool)`
+`func (o *HelmRepositoryReference) GetReferenceOk() (*string, bool)`
 
-GetGitReferenceOk returns a tuple with the GitReference field if it's non-nil, zero value otherwise
+GetReferenceOk returns a tuple with the Reference field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetGitReference
+### SetReference
 
-`func (o *HelmRepositoryReference) SetGitReference(v string)`
+`func (o *HelmRepositoryReference) SetReference(v string)`
 
-SetGitReference sets GitReference field to given value.
+SetReference sets Reference field to given value.
 
 
 

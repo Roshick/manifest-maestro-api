@@ -3,7 +3,7 @@ Manifest Maestro
 
 Renders Kubernetes manifests with the help of various tools such as Helm and Kustomize.
 
-API version: v1
+API version: v1.2.0
 Contact: e.rieb@posteo.de
 */
 
@@ -322,33 +322,33 @@ func (a *HelmAPIService) PostHelmListChartActionExecute(r ApiPostHelmListChartAc
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPostHelmRenderActionRequest struct {
+type ApiPostHelmRenderChartActionRequest struct {
 	ctx context.Context
 	ApiService *HelmAPIService
 	helmRenderChartAction *HelmRenderChartAction
 }
 
-func (r ApiPostHelmRenderActionRequest) HelmRenderChartAction(helmRenderChartAction HelmRenderChartAction) ApiPostHelmRenderActionRequest {
+func (r ApiPostHelmRenderChartActionRequest) HelmRenderChartAction(helmRenderChartAction HelmRenderChartAction) ApiPostHelmRenderChartActionRequest {
 	r.helmRenderChartAction = &helmRenderChartAction
 	return r
 }
 
-func (r ApiPostHelmRenderActionRequest) Execute() (*HelmRenderChartActionResponse, *http.Response, error) {
-	return r.ApiService.PostHelmRenderActionExecute(r)
+func (r ApiPostHelmRenderChartActionRequest) Execute() (*HelmRenderChartActionResponse, *http.Response, error) {
+	return r.ApiService.PostHelmRenderChartActionExecute(r)
 }
 
 /*
-PostHelmRenderAction Render Helm Chart
+PostHelmRenderChartAction Render Helm Chart
 
 Renders Kubernetes manifests based on Helm chart provided in a repository.
 
 Service needs read permission on given repository.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPostHelmRenderActionRequest
+ @return ApiPostHelmRenderChartActionRequest
 */
-func (a *HelmAPIService) PostHelmRenderAction(ctx context.Context) ApiPostHelmRenderActionRequest {
-	return ApiPostHelmRenderActionRequest{
+func (a *HelmAPIService) PostHelmRenderChartAction(ctx context.Context) ApiPostHelmRenderChartActionRequest {
+	return ApiPostHelmRenderChartActionRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -356,7 +356,7 @@ func (a *HelmAPIService) PostHelmRenderAction(ctx context.Context) ApiPostHelmRe
 
 // Execute executes the request
 //  @return HelmRenderChartActionResponse
-func (a *HelmAPIService) PostHelmRenderActionExecute(r ApiPostHelmRenderActionRequest) (*HelmRenderChartActionResponse, *http.Response, error) {
+func (a *HelmAPIService) PostHelmRenderChartActionExecute(r ApiPostHelmRenderChartActionRequest) (*HelmRenderChartActionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -364,7 +364,7 @@ func (a *HelmAPIService) PostHelmRenderActionExecute(r ApiPostHelmRenderActionRe
 		localVarReturnValue  *HelmRenderChartActionResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "HelmAPIService.PostHelmRenderAction")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "HelmAPIService.PostHelmRenderChartAction")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

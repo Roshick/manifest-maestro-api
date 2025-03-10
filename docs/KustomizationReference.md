@@ -4,16 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**RepositoryType** | **string** |  | 
 **RepositoryURL** | **string** |  | 
-**GitReference** | **string** |  | 
+**Reference** | **string** |  | 
 **Path** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
 ### NewKustomizationReference
 
-`func NewKustomizationReference(repositoryType string, repositoryURL string, gitReference string, ) *KustomizationReference`
+`func NewKustomizationReference(repositoryURL string, reference string, ) *KustomizationReference`
 
 NewKustomizationReference instantiates a new KustomizationReference object
 This constructor will assign default values to properties that have it defined,
@@ -27,26 +26,6 @@ will change when the set of required properties is changed
 NewKustomizationReferenceWithDefaults instantiates a new KustomizationReference object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetRepositoryType
-
-`func (o *KustomizationReference) GetRepositoryType() string`
-
-GetRepositoryType returns the RepositoryType field if non-nil, zero value otherwise.
-
-### GetRepositoryTypeOk
-
-`func (o *KustomizationReference) GetRepositoryTypeOk() (*string, bool)`
-
-GetRepositoryTypeOk returns a tuple with the RepositoryType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRepositoryType
-
-`func (o *KustomizationReference) SetRepositoryType(v string)`
-
-SetRepositoryType sets RepositoryType field to given value.
-
 
 ### GetRepositoryURL
 
@@ -68,24 +47,24 @@ and a boolean to check if the value has been set.
 SetRepositoryURL sets RepositoryURL field to given value.
 
 
-### GetGitReference
+### GetReference
 
-`func (o *KustomizationReference) GetGitReference() string`
+`func (o *KustomizationReference) GetReference() string`
 
-GetGitReference returns the GitReference field if non-nil, zero value otherwise.
+GetReference returns the Reference field if non-nil, zero value otherwise.
 
-### GetGitReferenceOk
+### GetReferenceOk
 
-`func (o *KustomizationReference) GetGitReferenceOk() (*string, bool)`
+`func (o *KustomizationReference) GetReferenceOk() (*string, bool)`
 
-GetGitReferenceOk returns a tuple with the GitReference field if it's non-nil, zero value otherwise
+GetReferenceOk returns a tuple with the Reference field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetGitReference
+### SetReference
 
-`func (o *KustomizationReference) SetGitReference(v string)`
+`func (o *KustomizationReference) SetReference(v string)`
 
-SetGitReference sets GitReference field to given value.
+SetReference sets Reference field to given value.
 
 
 ### GetPath

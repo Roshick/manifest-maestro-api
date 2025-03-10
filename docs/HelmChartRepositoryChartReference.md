@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**RepositoryType** | **string** |  | 
 **RepositoryURL** | **string** |  | 
 **ChartName** | **string** |  | 
 **ChartVersion** | Pointer to **string** |  | [optional] 
@@ -13,7 +12,7 @@ Name | Type | Description | Notes
 
 ### NewHelmChartRepositoryChartReference
 
-`func NewHelmChartRepositoryChartReference(repositoryType string, repositoryURL string, chartName string, ) *HelmChartRepositoryChartReference`
+`func NewHelmChartRepositoryChartReference(repositoryURL string, chartName string, ) *HelmChartRepositoryChartReference`
 
 NewHelmChartRepositoryChartReference instantiates a new HelmChartRepositoryChartReference object
 This constructor will assign default values to properties that have it defined,
@@ -27,26 +26,6 @@ will change when the set of required properties is changed
 NewHelmChartRepositoryChartReferenceWithDefaults instantiates a new HelmChartRepositoryChartReference object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetRepositoryType
-
-`func (o *HelmChartRepositoryChartReference) GetRepositoryType() string`
-
-GetRepositoryType returns the RepositoryType field if non-nil, zero value otherwise.
-
-### GetRepositoryTypeOk
-
-`func (o *HelmChartRepositoryChartReference) GetRepositoryTypeOk() (*string, bool)`
-
-GetRepositoryTypeOk returns a tuple with the RepositoryType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRepositoryType
-
-`func (o *HelmChartRepositoryChartReference) SetRepositoryType(v string)`
-
-SetRepositoryType sets RepositoryType field to given value.
-
 
 ### GetRepositoryURL
 

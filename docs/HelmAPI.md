@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**PostHelmGetChartMetadataAction**](HelmAPI.md#PostHelmGetChartMetadataAction) | **Post** /rest/api/v1/helm/actions/get-chart-metadata | Get Helm Chart Metadata
 [**PostHelmListChartAction**](HelmAPI.md#PostHelmListChartAction) | **Post** /rest/api/v1/helm/actions/list-charts | List all Helm Charts
-[**PostHelmRenderAction**](HelmAPI.md#PostHelmRenderAction) | **Post** /rest/api/v1/helm/actions/render-chart | Render Helm Chart
+[**PostHelmRenderChartAction**](HelmAPI.md#PostHelmRenderChartAction) | **Post** /rest/api/v1/helm/actions/render-chart | Render Helm Chart
 
 
 
@@ -31,7 +31,7 @@ import (
 )
 
 func main() {
-	helmGetChartMetadataAction := *openapiclient.NewHelmGetChartMetadataAction(openapiclient.HelmChartReference{GitRepositoryPathReference: openapiclient.NewGitRepositoryPathReference("RepositoryType_example", "RepositoryURL_example", "GitReference_example")}) // HelmGetChartMetadataAction | 
+	helmGetChartMetadataAction := *openapiclient.NewHelmGetChartMetadataAction(openapiclient.HelmChartReference{GitRepositoryPathReference: openapiclient.NewGitRepositoryPathReference("RepositoryURL_example", "Reference_example")}) // HelmGetChartMetadataAction | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -97,7 +97,7 @@ import (
 )
 
 func main() {
-	helmListChartsAction := *openapiclient.NewHelmListChartsAction(openapiclient.HelmRepositoryReference{GitRepositoryReference: openapiclient.NewGitRepositoryReference("RepositoryType_example", "RepositoryURL_example", "GitReference_example")}) // HelmListChartsAction | 
+	helmListChartsAction := *openapiclient.NewHelmListChartsAction(openapiclient.HelmRepositoryReference{GitRepositoryReference: openapiclient.NewGitRepositoryReference("RepositoryURL_example", "Reference_example")}) // HelmListChartsAction | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -142,9 +142,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## PostHelmRenderAction
+## PostHelmRenderChartAction
 
-> HelmRenderChartActionResponse PostHelmRenderAction(ctx).HelmRenderChartAction(helmRenderChartAction).Execute()
+> HelmRenderChartActionResponse PostHelmRenderChartAction(ctx).HelmRenderChartAction(helmRenderChartAction).Execute()
 
 Render Helm Chart
 
@@ -163,17 +163,17 @@ import (
 )
 
 func main() {
-	helmRenderChartAction := *openapiclient.NewHelmRenderChartAction(openapiclient.HelmChartReference{GitRepositoryPathReference: openapiclient.NewGitRepositoryPathReference("RepositoryType_example", "RepositoryURL_example", "GitReference_example")}) // HelmRenderChartAction | 
+	helmRenderChartAction := *openapiclient.NewHelmRenderChartAction(openapiclient.HelmChartReference{GitRepositoryPathReference: openapiclient.NewGitRepositoryPathReference("RepositoryURL_example", "Reference_example")}) // HelmRenderChartAction | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.HelmAPI.PostHelmRenderAction(context.Background()).HelmRenderChartAction(helmRenderChartAction).Execute()
+	resp, r, err := apiClient.HelmAPI.PostHelmRenderChartAction(context.Background()).HelmRenderChartAction(helmRenderChartAction).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `HelmAPI.PostHelmRenderAction``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `HelmAPI.PostHelmRenderChartAction``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `PostHelmRenderAction`: HelmRenderChartActionResponse
-	fmt.Fprintf(os.Stdout, "Response from `HelmAPI.PostHelmRenderAction`: %v\n", resp)
+	// response from `PostHelmRenderChartAction`: HelmRenderChartActionResponse
+	fmt.Fprintf(os.Stdout, "Response from `HelmAPI.PostHelmRenderChartAction`: %v\n", resp)
 }
 ```
 
@@ -183,7 +183,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPostHelmRenderActionRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPostHelmRenderChartActionRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

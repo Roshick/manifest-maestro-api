@@ -3,7 +3,7 @@ Manifest Maestro
 
 Renders Kubernetes manifests with the help of various tools such as Helm and Kustomize.
 
-API version: v1
+API version: v1.2.0
 Contact: e.rieb@posteo.de
 */
 
@@ -21,7 +21,6 @@ var _ MappedNullable = &HelmChartRepositoryChartReference{}
 
 // HelmChartRepositoryChartReference struct for HelmChartRepositoryChartReference
 type HelmChartRepositoryChartReference struct {
-	RepositoryType string `json:"repositoryType"`
 	RepositoryURL string `json:"repositoryURL"`
 	ChartName string `json:"chartName"`
 	ChartVersion *string `json:"chartVersion,omitempty"`
@@ -34,9 +33,8 @@ type _HelmChartRepositoryChartReference HelmChartRepositoryChartReference
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewHelmChartRepositoryChartReference(repositoryType string, repositoryURL string, chartName string) *HelmChartRepositoryChartReference {
+func NewHelmChartRepositoryChartReference(repositoryURL string, chartName string) *HelmChartRepositoryChartReference {
 	this := HelmChartRepositoryChartReference{}
-	this.RepositoryType = repositoryType
 	this.RepositoryURL = repositoryURL
 	this.ChartName = chartName
 	return &this
@@ -48,30 +46,6 @@ func NewHelmChartRepositoryChartReference(repositoryType string, repositoryURL s
 func NewHelmChartRepositoryChartReferenceWithDefaults() *HelmChartRepositoryChartReference {
 	this := HelmChartRepositoryChartReference{}
 	return &this
-}
-
-// GetRepositoryType returns the RepositoryType field value
-func (o *HelmChartRepositoryChartReference) GetRepositoryType() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.RepositoryType
-}
-
-// GetRepositoryTypeOk returns a tuple with the RepositoryType field value
-// and a boolean to check if the value has been set.
-func (o *HelmChartRepositoryChartReference) GetRepositoryTypeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.RepositoryType, true
-}
-
-// SetRepositoryType sets field value
-func (o *HelmChartRepositoryChartReference) SetRepositoryType(v string) {
-	o.RepositoryType = v
 }
 
 // GetRepositoryURL returns the RepositoryURL field value
@@ -164,7 +138,6 @@ func (o HelmChartRepositoryChartReference) MarshalJSON() ([]byte, error) {
 
 func (o HelmChartRepositoryChartReference) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["repositoryType"] = o.RepositoryType
 	toSerialize["repositoryURL"] = o.RepositoryURL
 	toSerialize["chartName"] = o.ChartName
 	if !IsNil(o.ChartVersion) {
@@ -183,7 +156,6 @@ func (o *HelmChartRepositoryChartReference) UnmarshalJSON(data []byte) (err erro
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"repositoryType",
 		"repositoryURL",
 		"chartName",
 	}
@@ -215,7 +187,6 @@ func (o *HelmChartRepositoryChartReference) UnmarshalJSON(data []byte) (err erro
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "repositoryType")
 		delete(additionalProperties, "repositoryURL")
 		delete(additionalProperties, "chartName")
 		delete(additionalProperties, "chartVersion")

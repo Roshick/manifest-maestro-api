@@ -3,7 +3,7 @@ Manifest Maestro
 
 Renders Kubernetes manifests with the help of various tools such as Helm and Kustomize.
 
-API version: v1
+API version: v1.2.0
 Contact: e.rieb@posteo.de
 */
 

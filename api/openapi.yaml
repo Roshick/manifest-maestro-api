@@ -10,7 +10,7 @@ info:
     name: Copyright (c) 2025 Elias R.
     url: https://github.com/Roshick
   title: Manifest Maestro
-  version: v1
+  version: v1.2.0
 servers:
 - url: /
 tags:
@@ -112,7 +112,7 @@ paths:
         Renders Kubernetes manifests based on Helm chart provided in a repository.
 
         Service needs read permission on given repository.
-      operationId: postHelmRenderAction
+      operationId: postHelmRenderChartAction
       requestBody:
         content:
           application/json:
@@ -270,7 +270,6 @@ components:
     HelmListChartsAction:
       example:
         reference:
-          repositoryType: repositoryType
           repositoryURL: repositoryURL
       properties:
         reference:
@@ -296,7 +295,6 @@ components:
         reference:
           chartName: chartName
           chartVersion: chartVersion
-          repositoryType: repositoryType
           repositoryURL: repositoryURL
       properties:
         reference:
@@ -318,7 +316,6 @@ components:
         reference:
           chartName: chartName
           chartVersion: chartVersion
-          repositoryType: repositoryType
           repositoryURL: repositoryURL
         parameters:
           stringValuesFlat:
@@ -379,9 +376,8 @@ components:
     KustomizeRenderKustomizationAction:
       example:
         reference:
+          reference: reference
           path: path
-          gitReference: gitReference
-          repositoryType: repositoryType
           repositoryURL: repositoryURL
         parameters:
           manifestInjections:
@@ -424,28 +420,21 @@ components:
       - $ref: '#/components/schemas/GitRepositoryReference'
     HelmChartRepositoryReference:
       example:
-        repositoryType: repositoryType
         repositoryURL: repositoryURL
       properties:
-        repositoryType:
-          type: string
         repositoryURL:
           type: string
       required:
-      - repositoryType
       - repositoryURL
       type: object
     GitRepositoryReference:
       properties:
-        repositoryType:
-          type: string
         repositoryURL:
           type: string
-        gitReference:
+        reference:
           type: string
       required:
-      - gitReference
-      - repositoryType
+      - reference
       - repositoryURL
       type: object
     HelmChartReference:
@@ -465,7 +454,6 @@ components:
       example:
         chartName: chartName
         chartVersion: chartVersion
-        repositoryType: repositoryType
         repositoryURL: repositoryURL
     KustomizationReference:
       oneOf:
@@ -477,9 +465,8 @@ components:
           path:
             type: string
       example:
+        reference: reference
         path: path
-        gitReference: gitReference
-        repositoryType: repositoryType
         repositoryURL: repositoryURL
     Manifest:
       example:

@@ -3,7 +3,7 @@ Manifest Maestro
 
 Renders Kubernetes manifests with the help of various tools such as Helm and Kustomize.
 
-API version: v1
+API version: v1.2.0
 Contact: e.rieb@posteo.de
 */
 
@@ -42,7 +42,7 @@ var (
 	queryDescape    = strings.NewReplacer( "%5B", "[", "%5D", "]" )
 )
 
-// APIClient manages communication with the Manifest Maestro API vv1
+// APIClient manages communication with the Manifest Maestro API vv1.2.0
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration

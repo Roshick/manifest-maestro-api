@@ -10,7 +10,7 @@ info:
     name: Copyright (c) 2025 Elias R.
     url: https://github.com/Roshick
   title: Manifest Maestro
-  version: v1
+  version: v1.2.0
 tags:
   - name: Helm
   - name: Kustomize
@@ -113,7 +113,7 @@ paths:
         Service needs read permission on given repository.
       tags:
         - Helm
-      operationId: postHelmRenderAction
+      operationId: postHelmRenderChartAction
       requestBody:
         content:
           application/json:
@@ -327,26 +327,20 @@ components:
     HelmChartRepositoryReference:
       type: object
       properties:
-        repositoryType:
-          type: string
         repositoryURL:
           type: string
       required:
-        - repositoryType
         - repositoryURL
     GitRepositoryReference:
       type: object
       properties:
-        repositoryType:
-          type: string
         repositoryURL:
           type: string
-        gitReference:
+        reference:
           type: string
       required:
-        - repositoryType
         - repositoryURL
-        - gitReference
+        - reference
     HelmChartReference:
       oneOf:
         - $ref: '#/components/schemas/HelmChartRepositoryChartReference'
