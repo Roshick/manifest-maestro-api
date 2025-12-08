@@ -53,8 +53,6 @@ type APIClient struct {
 	HelmAPI *HelmAPIService
 
 	KustomizeAPI *KustomizeAPIService
-
-	ManagementAPI *ManagementAPIService
 }
 
 type service struct {
@@ -75,7 +73,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	// API Services
 	c.HelmAPI = (*HelmAPIService)(&c.common)
 	c.KustomizeAPI = (*KustomizeAPIService)(&c.common)
-	c.ManagementAPI = (*ManagementAPIService)(&c.common)
 
 	return c
 }

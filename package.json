@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "api": "openapi-generator-cli generate"
+    "api": "rm -rf ./node-dist; [ -f .openapi-generator/FILES ] && xargs -a .openapi-generator/FILES rm -f; openapi-generator-cli generate"
   },
   "keywords": [],
   "author": "",

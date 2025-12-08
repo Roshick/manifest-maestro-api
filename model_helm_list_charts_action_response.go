@@ -21,7 +21,7 @@ var _ MappedNullable = &HelmListChartsActionResponse{}
 
 // HelmListChartsActionResponse struct for HelmListChartsActionResponse
 type HelmListChartsActionResponse struct {
-	Items []map[string]interface{} `json:"items"`
+	Items []HelmListChartsItem `json:"items"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -31,7 +31,7 @@ type _HelmListChartsActionResponse HelmListChartsActionResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewHelmListChartsActionResponse(items []map[string]interface{}) *HelmListChartsActionResponse {
+func NewHelmListChartsActionResponse(items []HelmListChartsItem) *HelmListChartsActionResponse {
 	this := HelmListChartsActionResponse{}
 	this.Items = items
 	return &this
@@ -46,9 +46,9 @@ func NewHelmListChartsActionResponseWithDefaults() *HelmListChartsActionResponse
 }
 
 // GetItems returns the Items field value
-func (o *HelmListChartsActionResponse) GetItems() []map[string]interface{} {
+func (o *HelmListChartsActionResponse) GetItems() []HelmListChartsItem {
 	if o == nil {
-		var ret []map[string]interface{}
+		var ret []HelmListChartsItem
 		return ret
 	}
 
@@ -57,7 +57,7 @@ func (o *HelmListChartsActionResponse) GetItems() []map[string]interface{} {
 
 // GetItemsOk returns a tuple with the Items field value
 // and a boolean to check if the value has been set.
-func (o *HelmListChartsActionResponse) GetItemsOk() ([]map[string]interface{}, bool) {
+func (o *HelmListChartsActionResponse) GetItemsOk() ([]HelmListChartsItem, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -65,7 +65,7 @@ func (o *HelmListChartsActionResponse) GetItemsOk() ([]map[string]interface{}, b
 }
 
 // SetItems sets field value
-func (o *HelmListChartsActionResponse) SetItems(v []map[string]interface{}) {
+func (o *HelmListChartsActionResponse) SetItems(v []HelmListChartsItem) {
 	o.Items = v
 }
 
