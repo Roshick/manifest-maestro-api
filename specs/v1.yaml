@@ -14,18 +14,17 @@ info:
 tags:
   - name: Helm
   - name: Kustomize
-  - name: Management
 paths:
   /rest/api/v1/helm/actions/list-charts:
     post:
       summary: List all Helm Charts
       description: |-
-        Lists all Helm Charts contained in the given repository.
+        Lists all charts contained in the given repository.
 
         Service needs read permission on given repository.
       tags:
         - Helm
-      operationId: postHelmListChartAction
+      operationId: postHelmListChartsAction
       requestBody:
         content:
           application/json:
@@ -57,11 +56,52 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
           description: Upstream failed to respond
+  /rest/api/v1/helm/actions/list-chart-versions:
+    post:
+      summary: List all versions of a Helm Chart
+      description: |-
+        Lists all versions of a chart contained in the given repository.
+
+        Service needs read permission on given repository.
+      tags:
+        - Helm
+      operationId: postHelmListChartVersionsAction
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HelmListChartVersionsAction'
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/HelmListChartVersionsAction'
+          description: Success
+        "400":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Bad request
+        "500":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
+        "502":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Upstream failed to respond
   /rest/api/v1/helm/actions/get-chart-metadata:
     post:
       summary: Get Helm Chart Metadata
       description: |-
-        Retrieves metadata of chart contained in the given repository.
+        Retrieves metadata of specific version of a chart contained in the given repository.
 
         Service needs read permission on given repository.
       tags:
@@ -198,51 +238,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
           description: Upstream failed to respond
-  /health/readiness:
-    get:
-      tags:
-        - Management
-      operationId: getReadinessHealth
-      responses:
-        "200":
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/HealthResponse'
-          description: OK
-        "500":
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-          description: Internal server error
-  /health/liveness:
-    get:
-      tags:
-        - Management
-      operationId: getLivenessHealth
-      responses:
-        "200":
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/HealthResponse'
-          description: OK
-        "500":
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-          description: Internal server error
 components:
   schemas:
-    HealthResponse:
-      type: object
-      properties:
-        description:
-          type: string
-        status:
-          type: string
     ErrorResponse:
       type: object
       properties:
@@ -269,7 +266,23 @@ components:
         items:
           type: array
           items:
-            type: object
+            type: string
+      required:
+        - items
+    HelmListChartVersionsAction:
+      type: object
+      properties:
+        reference:
+          $ref: '#/components/schemas/HelmChartReference'
+      required:
+        - reference
+    HelmListChartVersionsActionResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            type: string
       required:
         - items
     HelmGetChartMetadataAction:
@@ -320,6 +333,25 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Manifest'
+    HelmListChartsItem:
+      type: object
+      properties:
+        name:
+          type: string
+        versions:
+          items:
+            $ref: '#/components/schemas/HelmListChartsItemVersion'
+          type: array
+      required:
+        - name
+        - versions
+    HelmListChartsItemVersion:
+      type: object
+      properties:
+        version:
+          type: string
+      required:
+        - version
     HelmRepositoryReference:
       oneOf:
         - $ref: '#/components/schemas/HelmChartRepositoryReference'

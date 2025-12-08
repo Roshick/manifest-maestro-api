@@ -16,37 +16,37 @@ import (
 	"fmt"
 )
 
-// checks if the HelmListChartsActionResponse type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &HelmListChartsActionResponse{}
+// checks if the HelmListChartVersionsActionResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &HelmListChartVersionsActionResponse{}
 
-// HelmListChartsActionResponse struct for HelmListChartsActionResponse
-type HelmListChartsActionResponse struct {
+// HelmListChartVersionsActionResponse struct for HelmListChartVersionsActionResponse
+type HelmListChartVersionsActionResponse struct {
 	Items []string `json:"items"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _HelmListChartsActionResponse HelmListChartsActionResponse
+type _HelmListChartVersionsActionResponse HelmListChartVersionsActionResponse
 
-// NewHelmListChartsActionResponse instantiates a new HelmListChartsActionResponse object
+// NewHelmListChartVersionsActionResponse instantiates a new HelmListChartVersionsActionResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewHelmListChartsActionResponse(items []string) *HelmListChartsActionResponse {
-	this := HelmListChartsActionResponse{}
+func NewHelmListChartVersionsActionResponse(items []string) *HelmListChartVersionsActionResponse {
+	this := HelmListChartVersionsActionResponse{}
 	this.Items = items
 	return &this
 }
 
-// NewHelmListChartsActionResponseWithDefaults instantiates a new HelmListChartsActionResponse object
+// NewHelmListChartVersionsActionResponseWithDefaults instantiates a new HelmListChartVersionsActionResponse object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewHelmListChartsActionResponseWithDefaults() *HelmListChartsActionResponse {
-	this := HelmListChartsActionResponse{}
+func NewHelmListChartVersionsActionResponseWithDefaults() *HelmListChartVersionsActionResponse {
+	this := HelmListChartVersionsActionResponse{}
 	return &this
 }
 
 // GetItems returns the Items field value
-func (o *HelmListChartsActionResponse) GetItems() []string {
+func (o *HelmListChartVersionsActionResponse) GetItems() []string {
 	if o == nil {
 		var ret []string
 		return ret
@@ -57,7 +57,7 @@ func (o *HelmListChartsActionResponse) GetItems() []string {
 
 // GetItemsOk returns a tuple with the Items field value
 // and a boolean to check if the value has been set.
-func (o *HelmListChartsActionResponse) GetItemsOk() ([]string, bool) {
+func (o *HelmListChartVersionsActionResponse) GetItemsOk() ([]string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -65,11 +65,11 @@ func (o *HelmListChartsActionResponse) GetItemsOk() ([]string, bool) {
 }
 
 // SetItems sets field value
-func (o *HelmListChartsActionResponse) SetItems(v []string) {
+func (o *HelmListChartVersionsActionResponse) SetItems(v []string) {
 	o.Items = v
 }
 
-func (o HelmListChartsActionResponse) MarshalJSON() ([]byte, error) {
+func (o HelmListChartVersionsActionResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -77,7 +77,7 @@ func (o HelmListChartsActionResponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o HelmListChartsActionResponse) ToMap() (map[string]interface{}, error) {
+func (o HelmListChartVersionsActionResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["items"] = o.Items
 
@@ -88,7 +88,7 @@ func (o HelmListChartsActionResponse) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *HelmListChartsActionResponse) UnmarshalJSON(data []byte) (err error) {
+func (o *HelmListChartVersionsActionResponse) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
@@ -110,15 +110,15 @@ func (o *HelmListChartsActionResponse) UnmarshalJSON(data []byte) (err error) {
 		}
 	}
 
-	varHelmListChartsActionResponse := _HelmListChartsActionResponse{}
+	varHelmListChartVersionsActionResponse := _HelmListChartVersionsActionResponse{}
 
-	err = json.Unmarshal(data, &varHelmListChartsActionResponse)
+	err = json.Unmarshal(data, &varHelmListChartVersionsActionResponse)
 
 	if err != nil {
 		return err
 	}
 
-	*o = HelmListChartsActionResponse(varHelmListChartsActionResponse)
+	*o = HelmListChartVersionsActionResponse(varHelmListChartVersionsActionResponse)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -130,38 +130,38 @@ func (o *HelmListChartsActionResponse) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableHelmListChartsActionResponse struct {
-	value *HelmListChartsActionResponse
+type NullableHelmListChartVersionsActionResponse struct {
+	value *HelmListChartVersionsActionResponse
 	isSet bool
 }
 
-func (v NullableHelmListChartsActionResponse) Get() *HelmListChartsActionResponse {
+func (v NullableHelmListChartVersionsActionResponse) Get() *HelmListChartVersionsActionResponse {
 	return v.value
 }
 
-func (v *NullableHelmListChartsActionResponse) Set(val *HelmListChartsActionResponse) {
+func (v *NullableHelmListChartVersionsActionResponse) Set(val *HelmListChartVersionsActionResponse) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableHelmListChartsActionResponse) IsSet() bool {
+func (v NullableHelmListChartVersionsActionResponse) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableHelmListChartsActionResponse) Unset() {
+func (v *NullableHelmListChartVersionsActionResponse) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableHelmListChartsActionResponse(val *HelmListChartsActionResponse) *NullableHelmListChartsActionResponse {
-	return &NullableHelmListChartsActionResponse{value: val, isSet: true}
+func NewNullableHelmListChartVersionsActionResponse(val *HelmListChartVersionsActionResponse) *NullableHelmListChartVersionsActionResponse {
+	return &NullableHelmListChartVersionsActionResponse{value: val, isSet: true}
 }
 
-func (v NullableHelmListChartsActionResponse) MarshalJSON() ([]byte, error) {
+func (v NullableHelmListChartVersionsActionResponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableHelmListChartsActionResponse) UnmarshalJSON(src []byte) error {
+func (v *NullableHelmListChartVersionsActionResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

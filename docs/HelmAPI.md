@@ -5,7 +5,8 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**PostHelmGetChartMetadataAction**](HelmAPI.md#PostHelmGetChartMetadataAction) | **Post** /rest/api/v1/helm/actions/get-chart-metadata | Get Helm Chart Metadata
-[**PostHelmListChartAction**](HelmAPI.md#PostHelmListChartAction) | **Post** /rest/api/v1/helm/actions/list-charts | List all Helm Charts
+[**PostHelmListChartVersionsAction**](HelmAPI.md#PostHelmListChartVersionsAction) | **Post** /rest/api/v1/helm/actions/list-chart-versions | List all versions of a Helm Chart
+[**PostHelmListChartsAction**](HelmAPI.md#PostHelmListChartsAction) | **Post** /rest/api/v1/helm/actions/list-charts | List all Helm Charts
 [**PostHelmRenderChartAction**](HelmAPI.md#PostHelmRenderChartAction) | **Post** /rest/api/v1/helm/actions/render-chart | Render Helm Chart
 
 
@@ -76,9 +77,75 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## PostHelmListChartAction
+## PostHelmListChartVersionsAction
 
-> HelmListChartsActionResponse PostHelmListChartAction(ctx).HelmListChartsAction(helmListChartsAction).Execute()
+> HelmListChartVersionsAction PostHelmListChartVersionsAction(ctx).HelmListChartVersionsAction(helmListChartVersionsAction).Execute()
+
+List all versions of a Helm Chart
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Roshick/manifest-maestro-api"
+)
+
+func main() {
+	helmListChartVersionsAction := *openapiclient.NewHelmListChartVersionsAction(openapiclient.HelmChartReference{GitRepositoryPathReference: openapiclient.NewGitRepositoryPathReference("RepositoryURL_example", "Reference_example")}) // HelmListChartVersionsAction | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.HelmAPI.PostHelmListChartVersionsAction(context.Background()).HelmListChartVersionsAction(helmListChartVersionsAction).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `HelmAPI.PostHelmListChartVersionsAction``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PostHelmListChartVersionsAction`: HelmListChartVersionsAction
+	fmt.Fprintf(os.Stdout, "Response from `HelmAPI.PostHelmListChartVersionsAction`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPostHelmListChartVersionsActionRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **helmListChartVersionsAction** | [**HelmListChartVersionsAction**](HelmListChartVersionsAction.md) |  | 
+
+### Return type
+
+[**HelmListChartVersionsAction**](HelmListChartVersionsAction.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PostHelmListChartsAction
+
+> HelmListChartsActionResponse PostHelmListChartsAction(ctx).HelmListChartsAction(helmListChartsAction).Execute()
 
 List all Helm Charts
 
@@ -101,13 +168,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.HelmAPI.PostHelmListChartAction(context.Background()).HelmListChartsAction(helmListChartsAction).Execute()
+	resp, r, err := apiClient.HelmAPI.PostHelmListChartsAction(context.Background()).HelmListChartsAction(helmListChartsAction).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `HelmAPI.PostHelmListChartAction``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `HelmAPI.PostHelmListChartsAction``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `PostHelmListChartAction`: HelmListChartsActionResponse
-	fmt.Fprintf(os.Stdout, "Response from `HelmAPI.PostHelmListChartAction`: %v\n", resp)
+	// response from `PostHelmListChartsAction`: HelmListChartsActionResponse
+	fmt.Fprintf(os.Stdout, "Response from `HelmAPI.PostHelmListChartsAction`: %v\n", resp)
 }
 ```
 
@@ -117,7 +184,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPostHelmListChartActionRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPostHelmListChartsActionRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
