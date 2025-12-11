@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Reference** | [**KustomizationReference**](KustomizationReference.md) |  | 
+**Reference** | [**GitRepositoryPathReference**](GitRepositoryPathReference.md) |  | 
 **Parameters** | Pointer to [**KustomizeRenderParameters**](KustomizeRenderParameters.md) |  | [optional] 
 
 ## Methods
 
 ### NewKustomizeRenderKustomizationAction
 
-`func NewKustomizeRenderKustomizationAction(reference KustomizationReference, ) *KustomizeRenderKustomizationAction`
+`func NewKustomizeRenderKustomizationAction(reference GitRepositoryPathReference, ) *KustomizeRenderKustomizationAction`
 
 NewKustomizeRenderKustomizationAction instantiates a new KustomizeRenderKustomizationAction object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetReference
 
-`func (o *KustomizeRenderKustomizationAction) GetReference() KustomizationReference`
+`func (o *KustomizeRenderKustomizationAction) GetReference() GitRepositoryPathReference`
 
 GetReference returns the Reference field if non-nil, zero value otherwise.
 
 ### GetReferenceOk
 
-`func (o *KustomizeRenderKustomizationAction) GetReferenceOk() (*KustomizationReference, bool)`
+`func (o *KustomizeRenderKustomizationAction) GetReferenceOk() (*GitRepositoryPathReference, bool)`
 
 GetReferenceOk returns a tuple with the Reference field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetReference
 
-`func (o *KustomizeRenderKustomizationAction) SetReference(v KustomizationReference)`
+`func (o *KustomizeRenderKustomizationAction) SetReference(v GitRepositoryPathReference)`
 
 SetReference sets Reference field to given value.
 

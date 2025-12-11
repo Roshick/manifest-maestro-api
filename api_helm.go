@@ -41,7 +41,7 @@ func (r ApiPostHelmGetChartMetadataActionRequest) Execute() (*HelmGetChartMetada
 /*
 PostHelmGetChartMetadataAction Get Helm Chart Metadata
 
-Retrieves metadata of chart contained in the given repository.
+Retrieves metadata of specific version of a chart contained in the given repository.
 
 Service needs read permission on given repository.
 
@@ -178,33 +178,177 @@ func (a *HelmAPIService) PostHelmGetChartMetadataActionExecute(r ApiPostHelmGetC
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPostHelmListChartActionRequest struct {
+type ApiPostHelmListChartVersionsActionRequest struct {
+	ctx context.Context
+	ApiService *HelmAPIService
+	helmListChartVersionsAction *HelmListChartVersionsAction
+}
+
+func (r ApiPostHelmListChartVersionsActionRequest) HelmListChartVersionsAction(helmListChartVersionsAction HelmListChartVersionsAction) ApiPostHelmListChartVersionsActionRequest {
+	r.helmListChartVersionsAction = &helmListChartVersionsAction
+	return r
+}
+
+func (r ApiPostHelmListChartVersionsActionRequest) Execute() (*HelmListChartVersionsAction, *http.Response, error) {
+	return r.ApiService.PostHelmListChartVersionsActionExecute(r)
+}
+
+/*
+PostHelmListChartVersionsAction List all versions of a Helm Chart
+
+Lists all versions of a chart contained in the given repository.
+
+Service needs read permission on given repository.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiPostHelmListChartVersionsActionRequest
+*/
+func (a *HelmAPIService) PostHelmListChartVersionsAction(ctx context.Context) ApiPostHelmListChartVersionsActionRequest {
+	return ApiPostHelmListChartVersionsActionRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return HelmListChartVersionsAction
+func (a *HelmAPIService) PostHelmListChartVersionsActionExecute(r ApiPostHelmListChartVersionsActionRequest) (*HelmListChartVersionsAction, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *HelmListChartVersionsAction
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "HelmAPIService.PostHelmListChartVersionsAction")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/rest/api/v1/helm/actions/list-chart-versions"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.helmListChartVersionsAction == nil {
+		return localVarReturnValue, nil, reportError("helmListChartVersionsAction is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"*/*"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.helmListChartVersionsAction
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 502 {
+			var v ErrorResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPostHelmListChartsActionRequest struct {
 	ctx context.Context
 	ApiService *HelmAPIService
 	helmListChartsAction *HelmListChartsAction
 }
 
-func (r ApiPostHelmListChartActionRequest) HelmListChartsAction(helmListChartsAction HelmListChartsAction) ApiPostHelmListChartActionRequest {
+func (r ApiPostHelmListChartsActionRequest) HelmListChartsAction(helmListChartsAction HelmListChartsAction) ApiPostHelmListChartsActionRequest {
 	r.helmListChartsAction = &helmListChartsAction
 	return r
 }
 
-func (r ApiPostHelmListChartActionRequest) Execute() (*HelmListChartsActionResponse, *http.Response, error) {
-	return r.ApiService.PostHelmListChartActionExecute(r)
+func (r ApiPostHelmListChartsActionRequest) Execute() (*HelmListChartsActionResponse, *http.Response, error) {
+	return r.ApiService.PostHelmListChartsActionExecute(r)
 }
 
 /*
-PostHelmListChartAction List all Helm Charts
+PostHelmListChartsAction List all Helm Charts
 
-Lists all Helm Charts contained in the given repository.
+Lists all charts contained in the given repository.
 
 Service needs read permission on given repository.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPostHelmListChartActionRequest
+ @return ApiPostHelmListChartsActionRequest
 */
-func (a *HelmAPIService) PostHelmListChartAction(ctx context.Context) ApiPostHelmListChartActionRequest {
-	return ApiPostHelmListChartActionRequest{
+func (a *HelmAPIService) PostHelmListChartsAction(ctx context.Context) ApiPostHelmListChartsActionRequest {
+	return ApiPostHelmListChartsActionRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -212,7 +356,7 @@ func (a *HelmAPIService) PostHelmListChartAction(ctx context.Context) ApiPostHel
 
 // Execute executes the request
 //  @return HelmListChartsActionResponse
-func (a *HelmAPIService) PostHelmListChartActionExecute(r ApiPostHelmListChartActionRequest) (*HelmListChartsActionResponse, *http.Response, error) {
+func (a *HelmAPIService) PostHelmListChartsActionExecute(r ApiPostHelmListChartsActionRequest) (*HelmListChartsActionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -220,7 +364,7 @@ func (a *HelmAPIService) PostHelmListChartActionExecute(r ApiPostHelmListChartAc
 		localVarReturnValue  *HelmListChartsActionResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "HelmAPIService.PostHelmListChartAction")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "HelmAPIService.PostHelmListChartsAction")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

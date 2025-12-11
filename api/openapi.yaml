@@ -16,53 +16,93 @@ servers:
 tags:
 - name: Helm
 - name: Kustomize
-- name: Management
 paths:
   /rest/api/v1/helm/actions/list-charts:
     post:
       description: |-
-        Lists all Helm Charts contained in the given repository.
+        Lists all charts contained in the given repository.
 
         Service needs read permission on given repository.
-      operationId: postHelmListChartAction
+      operationId: postHelmListChartsAction
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/HelmListChartsAction'
+              $ref: "#/components/schemas/HelmListChartsAction"
         required: true
       responses:
         "200":
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/HelmListChartsActionResponse'
+                $ref: "#/components/schemas/HelmListChartsActionResponse"
           description: Success
         "400":
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: "#/components/schemas/ErrorResponse"
           description: Bad request
         "500":
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: "#/components/schemas/ErrorResponse"
           description: Internal server error
         "502":
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: "#/components/schemas/ErrorResponse"
           description: Upstream failed to respond
       summary: List all Helm Charts
+      tags:
+      - Helm
+  /rest/api/v1/helm/actions/list-chart-versions:
+    post:
+      description: |-
+        Lists all versions of a chart contained in the given repository.
+
+        Service needs read permission on given repository.
+      operationId: postHelmListChartVersionsAction
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/HelmListChartVersionsAction"
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/HelmListChartVersionsAction"
+          description: Success
+        "400":
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+          description: Bad request
+        "500":
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+          description: Internal server error
+        "502":
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+          description: Upstream failed to respond
+      summary: List all versions of a Helm Chart
       tags:
       - Helm
   /rest/api/v1/helm/actions/get-chart-metadata:
     post:
       description: |-
-        Retrieves metadata of chart contained in the given repository.
+        Retrieves metadata of specific version of a chart contained in the given repository.
 
         Service needs read permission on given repository.
       operationId: postHelmGetChartMetadataAction
@@ -70,38 +110,38 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/HelmGetChartMetadataAction'
+              $ref: "#/components/schemas/HelmGetChartMetadataAction"
         required: true
       responses:
         "200":
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/HelmGetChartMetadataActionResponse'
+                $ref: "#/components/schemas/HelmGetChartMetadataActionResponse"
           description: Success
         "400":
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: "#/components/schemas/ErrorResponse"
           description: Bad request
         "422":
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: "#/components/schemas/ErrorResponse"
           description: Repository is in an unprocessable state
         "500":
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: "#/components/schemas/ErrorResponse"
           description: Internal server error
         "502":
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: "#/components/schemas/ErrorResponse"
           description: Upstream failed to respond
       summary: Get Helm Chart Metadata
       tags:
@@ -117,38 +157,38 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/HelmRenderChartAction'
+              $ref: "#/components/schemas/HelmRenderChartAction"
         required: true
       responses:
         "200":
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/HelmRenderChartActionResponse'
+                $ref: "#/components/schemas/HelmRenderChartActionResponse"
           description: Success
         "400":
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: "#/components/schemas/ErrorResponse"
           description: Bad request
         "422":
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: "#/components/schemas/ErrorResponse"
           description: Repository is in an unprocessable state
         "500":
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: "#/components/schemas/ErrorResponse"
           description: Internal server error
         "502":
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: "#/components/schemas/ErrorResponse"
           description: Upstream failed to respond
       summary: Render Helm Chart
       tags:
@@ -164,90 +204,44 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/KustomizeRenderKustomizationAction'
+              $ref: "#/components/schemas/KustomizeRenderKustomizationAction"
         required: true
       responses:
         "200":
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/KustomizeRenderKustomizationActionResponse'
+                $ref: "#/components/schemas/KustomizeRenderKustomizationActionResponse"
           description: Success
         "400":
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: "#/components/schemas/ErrorResponse"
           description: Bad request
         "422":
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: "#/components/schemas/ErrorResponse"
           description: Repository is in an unprocessable state
         "500":
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: "#/components/schemas/ErrorResponse"
           description: Internal server error
         "502":
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: "#/components/schemas/ErrorResponse"
           description: Upstream failed to respond
       summary: Render Kustomize Kustomization
       tags:
       - Kustomize
-  /health/readiness:
-    get:
-      operationId: getReadinessHealth
-      responses:
-        "200":
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/HealthResponse'
-          description: OK
-        "500":
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-          description: Internal server error
-      tags:
-      - Management
-  /health/liveness:
-    get:
-      operationId: getLivenessHealth
-      responses:
-        "200":
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/HealthResponse'
-          description: OK
-        "500":
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-          description: Internal server error
-      tags:
-      - Management
 components:
   schemas:
-    HealthResponse:
-      example:
-        description: description
-        status: status
-      properties:
-        description:
-          type: string
-        status:
-          type: string
-      type: object
     ErrorResponse:
       example:
         instance: instance
@@ -273,19 +267,40 @@ components:
           repositoryURL: repositoryURL
       properties:
         reference:
-          $ref: '#/components/schemas/HelmRepositoryReference'
+          $ref: "#/components/schemas/HelmRepositoryReference"
       required:
       - reference
       type: object
     HelmListChartsActionResponse:
       example:
         items:
-        - "{}"
-        - "{}"
+        - items
+        - items
       properties:
         items:
           items:
-            type: object
+            type: string
+          type: array
+      required:
+      - items
+      type: object
+    HelmListChartVersionsAction:
+      example:
+        reference:
+          chartName: chartName
+          chartVersion: chartVersion
+          repositoryURL: repositoryURL
+      properties:
+        reference:
+          $ref: "#/components/schemas/HelmChartReference"
+      required:
+      - reference
+      type: object
+    HelmListChartVersionsActionResponse:
+      properties:
+        items:
+          items:
+            type: string
           type: array
       required:
       - items
@@ -298,7 +313,7 @@ components:
           repositoryURL: repositoryURL
       properties:
         reference:
-          $ref: '#/components/schemas/HelmChartReference'
+          $ref: "#/components/schemas/HelmChartReference"
       required:
       - reference
       type: object
@@ -343,9 +358,9 @@ components:
           ignoreMissingValueFiles: false
       properties:
         reference:
-          $ref: '#/components/schemas/HelmChartReference'
+          $ref: "#/components/schemas/HelmChartReference"
         parameters:
-          $ref: '#/components/schemas/HelmRenderParameters'
+          $ref: "#/components/schemas/HelmRenderParameters"
       required:
       - reference
       type: object
@@ -368,10 +383,10 @@ components:
       properties:
         manifests:
           items:
-            $ref: '#/components/schemas/Manifest'
+            $ref: "#/components/schemas/Manifest"
           type: array
         metadata:
-          $ref: '#/components/schemas/HelmRenderMetadata'
+          $ref: "#/components/schemas/HelmRenderMetadata"
       type: object
     KustomizeRenderKustomizationAction:
       example:
@@ -395,9 +410,9 @@ components:
               content: "{}"
       properties:
         reference:
-          $ref: '#/components/schemas/KustomizationReference'
+          $ref: "#/components/schemas/GitRepositoryPathReference"
         parameters:
-          $ref: '#/components/schemas/KustomizeRenderParameters'
+          $ref: "#/components/schemas/KustomizeRenderParameters"
       required:
       - reference
       type: object
@@ -411,13 +426,32 @@ components:
       properties:
         manifests:
           items:
-            $ref: '#/components/schemas/Manifest'
+            $ref: "#/components/schemas/Manifest"
           type: array
+      type: object
+    HelmListChartsItem:
+      properties:
+        name:
+          type: string
+        versions:
+          items:
+            $ref: "#/components/schemas/HelmListChartsItemVersion"
+          type: array
+      required:
+      - name
+      - versions
+      type: object
+    HelmListChartsItemVersion:
+      properties:
+        version:
+          type: string
+      required:
+      - version
       type: object
     HelmRepositoryReference:
       oneOf:
-      - $ref: '#/components/schemas/HelmChartRepositoryReference'
-      - $ref: '#/components/schemas/GitRepositoryReference'
+      - $ref: "#/components/schemas/HelmChartRepositoryReference"
+      - $ref: "#/components/schemas/GitRepositoryReference"
     HelmChartRepositoryReference:
       example:
         repositoryURL: repositoryURL
@@ -439,11 +473,11 @@ components:
       type: object
     HelmChartReference:
       oneOf:
-      - $ref: '#/components/schemas/HelmChartRepositoryChartReference'
-      - $ref: '#/components/schemas/GitRepositoryPathReference'
+      - $ref: "#/components/schemas/HelmChartRepositoryChartReference"
+      - $ref: "#/components/schemas/GitRepositoryPathReference"
     HelmChartRepositoryChartReference:
       allOf:
-      - $ref: '#/components/schemas/HelmChartRepositoryReference'
+      - $ref: "#/components/schemas/HelmChartRepositoryReference"
       - properties:
           chartName:
             type: string
@@ -456,11 +490,10 @@ components:
         chartVersion: chartVersion
         repositoryURL: repositoryURL
     KustomizationReference:
-      oneOf:
-      - $ref: '#/components/schemas/GitRepositoryPathReference'
+      $ref: "#/components/schemas/GitRepositoryPathReference"
     GitRepositoryPathReference:
       allOf:
-      - $ref: '#/components/schemas/GitRepositoryReference'
+      - $ref: "#/components/schemas/GitRepositoryReference"
       - properties:
           path:
             type: string
@@ -599,7 +632,7 @@ components:
       properties:
         manifestInjections:
           items:
-            $ref: '#/components/schemas/KustomizeManifestInjection'
+            $ref: "#/components/schemas/KustomizeManifestInjection"
           type: array
       type: object
     KustomizeManifestInjection:
@@ -615,7 +648,7 @@ components:
           type: string
         manifests:
           items:
-            $ref: '#/components/schemas/Manifest'
+            $ref: "#/components/schemas/Manifest"
           type: array
       required:
       - fileName

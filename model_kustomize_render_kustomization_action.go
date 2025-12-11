@@ -21,7 +21,7 @@ var _ MappedNullable = &KustomizeRenderKustomizationAction{}
 
 // KustomizeRenderKustomizationAction struct for KustomizeRenderKustomizationAction
 type KustomizeRenderKustomizationAction struct {
-	Reference KustomizationReference `json:"reference"`
+	Reference GitRepositoryPathReference `json:"reference"`
 	Parameters *KustomizeRenderParameters `json:"parameters,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -32,7 +32,7 @@ type _KustomizeRenderKustomizationAction KustomizeRenderKustomizationAction
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewKustomizeRenderKustomizationAction(reference KustomizationReference) *KustomizeRenderKustomizationAction {
+func NewKustomizeRenderKustomizationAction(reference GitRepositoryPathReference) *KustomizeRenderKustomizationAction {
 	this := KustomizeRenderKustomizationAction{}
 	this.Reference = reference
 	return &this
@@ -47,9 +47,9 @@ func NewKustomizeRenderKustomizationActionWithDefaults() *KustomizeRenderKustomi
 }
 
 // GetReference returns the Reference field value
-func (o *KustomizeRenderKustomizationAction) GetReference() KustomizationReference {
+func (o *KustomizeRenderKustomizationAction) GetReference() GitRepositoryPathReference {
 	if o == nil {
-		var ret KustomizationReference
+		var ret GitRepositoryPathReference
 		return ret
 	}
 
@@ -58,7 +58,7 @@ func (o *KustomizeRenderKustomizationAction) GetReference() KustomizationReferen
 
 // GetReferenceOk returns a tuple with the Reference field value
 // and a boolean to check if the value has been set.
-func (o *KustomizeRenderKustomizationAction) GetReferenceOk() (*KustomizationReference, bool) {
+func (o *KustomizeRenderKustomizationAction) GetReferenceOk() (*GitRepositoryPathReference, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *KustomizeRenderKustomizationAction) GetReferenceOk() (*KustomizationRef
 }
 
 // SetReference sets field value
-func (o *KustomizeRenderKustomizationAction) SetReference(v KustomizationReference) {
+func (o *KustomizeRenderKustomizationAction) SetReference(v GitRepositoryPathReference) {
 	o.Reference = v
 }
 

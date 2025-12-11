@@ -29,7 +29,7 @@ import (
 )
 
 func main() {
-	kustomizeRenderKustomizationAction := *openapiclient.NewKustomizeRenderKustomizationAction(openapiclient.KustomizationReference{GitRepositoryPathReference: openapiclient.NewGitRepositoryPathReference("RepositoryURL_example", "Reference_example")}) // KustomizeRenderKustomizationAction | 
+	kustomizeRenderKustomizationAction := *openapiclient.NewKustomizeRenderKustomizationAction(*openapiclient.NewGitRepositoryPathReference("RepositoryURL_example", "Reference_example")) // KustomizeRenderKustomizationAction | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
