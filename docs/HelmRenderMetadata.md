@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ReleaseName** | **string** |  | 
 **Namespace** | **string** |  | 
+**AppVersion** | Pointer to **string** |  | [optional] 
 **ApiVersions** | **[]string** |  | 
 **KubeVersion** | **string** |  | 
 **HelmVersion** | **string** |  | 
@@ -69,6 +70,31 @@ and a boolean to check if the value has been set.
 
 SetNamespace sets Namespace field to given value.
 
+
+### GetAppVersion
+
+`func (o *HelmRenderMetadata) GetAppVersion() string`
+
+GetAppVersion returns the AppVersion field if non-nil, zero value otherwise.
+
+### GetAppVersionOk
+
+`func (o *HelmRenderMetadata) GetAppVersionOk() (*string, bool)`
+
+GetAppVersionOk returns a tuple with the AppVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAppVersion
+
+`func (o *HelmRenderMetadata) SetAppVersion(v string)`
+
+SetAppVersion sets AppVersion field to given value.
+
+### HasAppVersion
+
+`func (o *HelmRenderMetadata) HasAppVersion() bool`
+
+HasAppVersion returns a boolean if a field has been set.
 
 ### GetApiVersions
 

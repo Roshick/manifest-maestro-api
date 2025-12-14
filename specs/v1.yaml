@@ -412,6 +412,8 @@ components:
           type: string
         namespace:
           type: string
+        appVersion:
+          type: string
         apiVersions:
           items:
             type: string
