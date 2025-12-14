@@ -23,6 +23,7 @@ var _ MappedNullable = &HelmRenderMetadata{}
 type HelmRenderMetadata struct {
 	ReleaseName string `json:"releaseName"`
 	Namespace string `json:"namespace"`
+	AppVersion *string `json:"appVersion,omitempty"`
 	ApiVersions []string `json:"apiVersions"`
 	KubeVersion string `json:"kubeVersion"`
 	HelmVersion string `json:"helmVersion"`
@@ -101,6 +102,38 @@ func (o *HelmRenderMetadata) GetNamespaceOk() (*string, bool) {
 // SetNamespace sets field value
 func (o *HelmRenderMetadata) SetNamespace(v string) {
 	o.Namespace = v
+}
+
+// GetAppVersion returns the AppVersion field value if set, zero value otherwise.
+func (o *HelmRenderMetadata) GetAppVersion() string {
+	if o == nil || IsNil(o.AppVersion) {
+		var ret string
+		return ret
+	}
+	return *o.AppVersion
+}
+
+// GetAppVersionOk returns a tuple with the AppVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *HelmRenderMetadata) GetAppVersionOk() (*string, bool) {
+	if o == nil || IsNil(o.AppVersion) {
+		return nil, false
+	}
+	return o.AppVersion, true
+}
+
+// HasAppVersion returns a boolean if a field has been set.
+func (o *HelmRenderMetadata) HasAppVersion() bool {
+	if o != nil && !IsNil(o.AppVersion) {
+		return true
+	}
+
+	return false
+}
+
+// SetAppVersion gets a reference to the given string and assigns it to the AppVersion field.
+func (o *HelmRenderMetadata) SetAppVersion(v string) {
+	o.AppVersion = &v
 }
 
 // GetApiVersions returns the ApiVersions field value
@@ -211,6 +244,9 @@ func (o HelmRenderMetadata) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["releaseName"] = o.ReleaseName
 	toSerialize["namespace"] = o.Namespace
+	if !IsNil(o.AppVersion) {
+		toSerialize["appVersion"] = o.AppVersion
+	}
 	toSerialize["apiVersions"] = o.ApiVersions
 	toSerialize["kubeVersion"] = o.KubeVersion
 	toSerialize["helmVersion"] = o.HelmVersion
@@ -265,6 +301,7 @@ func (o *HelmRenderMetadata) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "releaseName")
 		delete(additionalProperties, "namespace")
+		delete(additionalProperties, "appVersion")
 		delete(additionalProperties, "apiVersions")
 		delete(additionalProperties, "kubeVersion")
 		delete(additionalProperties, "helmVersion")

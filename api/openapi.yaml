@@ -367,6 +367,7 @@ components:
     HelmRenderChartActionResponse:
       example:
         metadata:
+          appVersion: appVersion
           helmVersion: helmVersion
           kubeVersion: kubeVersion
           mergedValues: "{}"
@@ -515,6 +516,7 @@ components:
       type: object
     HelmRenderMetadata:
       example:
+        appVersion: appVersion
         helmVersion: helmVersion
         kubeVersion: kubeVersion
         mergedValues: "{}"
@@ -527,6 +529,8 @@ components:
         releaseName:
           type: string
         namespace:
+          type: string
+        appVersion:
           type: string
         apiVersions:
           items:
