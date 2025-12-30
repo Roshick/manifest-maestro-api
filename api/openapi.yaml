@@ -367,7 +367,13 @@ components:
     HelmRenderChartActionResponse:
       example:
         metadata:
-          appVersion: appVersion
+          chartMetadata:
+            appVersion: appVersion
+            name: name
+            version: version
+            dependencies:
+            - null
+            - null
           helmVersion: helmVersion
           kubeVersion: kubeVersion
           mergedValues: "{}"
@@ -514,9 +520,39 @@ components:
       required:
       - content
       type: object
-    HelmRenderMetadata:
+    HelmChartMetadata:
       example:
         appVersion: appVersion
+        name: name
+        version: version
+        dependencies:
+        - null
+        - null
+      properties:
+        name:
+          type: string
+        version:
+          type: string
+        appVersion:
+          type: string
+        dependencies:
+          items:
+            $ref: "#/components/schemas/HelmChartMetadata"
+          type: array
+      required:
+      - dependencies
+      - name
+      - version
+      type: object
+    HelmRenderMetadata:
+      example:
+        chartMetadata:
+          appVersion: appVersion
+          name: name
+          version: version
+          dependencies:
+          - null
+          - null
         helmVersion: helmVersion
         kubeVersion: kubeVersion
         mergedValues: "{}"
@@ -530,8 +566,6 @@ components:
           type: string
         namespace:
           type: string
-        appVersion:
-          type: string
         apiVersions:
           items:
             type: string
@@ -542,8 +576,11 @@ components:
           type: string
         mergedValues:
           type: object
+        chartMetadata:
+          $ref: "#/components/schemas/HelmChartMetadata"
       required:
       - apiVersions
+      - chartMetadata
       - helmVersion
       - kubeVersion
       - mergedValues

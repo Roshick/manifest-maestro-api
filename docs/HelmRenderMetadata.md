@@ -6,17 +6,17 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ReleaseName** | **string** |  | 
 **Namespace** | **string** |  | 
-**AppVersion** | Pointer to **string** |  | [optional] 
 **ApiVersions** | **[]string** |  | 
 **KubeVersion** | **string** |  | 
 **HelmVersion** | **string** |  | 
 **MergedValues** | **map[string]interface{}** |  | 
+**ChartMetadata** | [**HelmChartMetadata**](HelmChartMetadata.md) |  | 
 
 ## Methods
 
 ### NewHelmRenderMetadata
 
-`func NewHelmRenderMetadata(releaseName string, namespace string, apiVersions []string, kubeVersion string, helmVersion string, mergedValues map[string]interface{}, ) *HelmRenderMetadata`
+`func NewHelmRenderMetadata(releaseName string, namespace string, apiVersions []string, kubeVersion string, helmVersion string, mergedValues map[string]interface{}, chartMetadata HelmChartMetadata, ) *HelmRenderMetadata`
 
 NewHelmRenderMetadata instantiates a new HelmRenderMetadata object
 This constructor will assign default values to properties that have it defined,
@@ -70,31 +70,6 @@ and a boolean to check if the value has been set.
 
 SetNamespace sets Namespace field to given value.
 
-
-### GetAppVersion
-
-`func (o *HelmRenderMetadata) GetAppVersion() string`
-
-GetAppVersion returns the AppVersion field if non-nil, zero value otherwise.
-
-### GetAppVersionOk
-
-`func (o *HelmRenderMetadata) GetAppVersionOk() (*string, bool)`
-
-GetAppVersionOk returns a tuple with the AppVersion field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAppVersion
-
-`func (o *HelmRenderMetadata) SetAppVersion(v string)`
-
-SetAppVersion sets AppVersion field to given value.
-
-### HasAppVersion
-
-`func (o *HelmRenderMetadata) HasAppVersion() bool`
-
-HasAppVersion returns a boolean if a field has been set.
 
 ### GetApiVersions
 
@@ -174,6 +149,26 @@ and a boolean to check if the value has been set.
 `func (o *HelmRenderMetadata) SetMergedValues(v map[string]interface{})`
 
 SetMergedValues sets MergedValues field to given value.
+
+
+### GetChartMetadata
+
+`func (o *HelmRenderMetadata) GetChartMetadata() HelmChartMetadata`
+
+GetChartMetadata returns the ChartMetadata field if non-nil, zero value otherwise.
+
+### GetChartMetadataOk
+
+`func (o *HelmRenderMetadata) GetChartMetadataOk() (*HelmChartMetadata, bool)`
+
+GetChartMetadataOk returns a tuple with the ChartMetadata field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChartMetadata
+
+`func (o *HelmRenderMetadata) SetChartMetadata(v HelmChartMetadata)`
+
+SetChartMetadata sets ChartMetadata field to given value.
 
 
 

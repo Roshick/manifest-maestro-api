@@ -91,6 +91,7 @@ Class | Method | HTTP request | Description
  - [ErrorResponse](docs/ErrorResponse.md)
  - [GitRepositoryPathReference](docs/GitRepositoryPathReference.md)
  - [GitRepositoryReference](docs/GitRepositoryReference.md)
+ - [HelmChartMetadata](docs/HelmChartMetadata.md)
  - [HelmChartReference](docs/HelmChartReference.md)
  - [HelmChartRepositoryChartReference](docs/HelmChartRepositoryChartReference.md)
  - [HelmChartRepositoryReference](docs/HelmChartRepositoryReference.md)

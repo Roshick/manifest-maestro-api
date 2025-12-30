@@ -23,11 +23,11 @@ var _ MappedNullable = &HelmRenderMetadata{}
 type HelmRenderMetadata struct {
 	ReleaseName string `json:"releaseName"`
 	Namespace string `json:"namespace"`
-	AppVersion *string `json:"appVersion,omitempty"`
 	ApiVersions []string `json:"apiVersions"`
 	KubeVersion string `json:"kubeVersion"`
 	HelmVersion string `json:"helmVersion"`
 	MergedValues map[string]interface{} `json:"mergedValues"`
+	ChartMetadata HelmChartMetadata `json:"chartMetadata"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -37,7 +37,7 @@ type _HelmRenderMetadata HelmRenderMetadata
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewHelmRenderMetadata(releaseName string, namespace string, apiVersions []string, kubeVersion string, helmVersion string, mergedValues map[string]interface{}) *HelmRenderMetadata {
+func NewHelmRenderMetadata(releaseName string, namespace string, apiVersions []string, kubeVersion string, helmVersion string, mergedValues map[string]interface{}, chartMetadata HelmChartMetadata) *HelmRenderMetadata {
 	this := HelmRenderMetadata{}
 	this.ReleaseName = releaseName
 	this.Namespace = namespace
@@ -45,6 +45,7 @@ func NewHelmRenderMetadata(releaseName string, namespace string, apiVersions []s
 	this.KubeVersion = kubeVersion
 	this.HelmVersion = helmVersion
 	this.MergedValues = mergedValues
+	this.ChartMetadata = chartMetadata
 	return &this
 }
 
@@ -102,38 +103,6 @@ func (o *HelmRenderMetadata) GetNamespaceOk() (*string, bool) {
 // SetNamespace sets field value
 func (o *HelmRenderMetadata) SetNamespace(v string) {
 	o.Namespace = v
-}
-
-// GetAppVersion returns the AppVersion field value if set, zero value otherwise.
-func (o *HelmRenderMetadata) GetAppVersion() string {
-	if o == nil || IsNil(o.AppVersion) {
-		var ret string
-		return ret
-	}
-	return *o.AppVersion
-}
-
-// GetAppVersionOk returns a tuple with the AppVersion field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *HelmRenderMetadata) GetAppVersionOk() (*string, bool) {
-	if o == nil || IsNil(o.AppVersion) {
-		return nil, false
-	}
-	return o.AppVersion, true
-}
-
-// HasAppVersion returns a boolean if a field has been set.
-func (o *HelmRenderMetadata) HasAppVersion() bool {
-	if o != nil && !IsNil(o.AppVersion) {
-		return true
-	}
-
-	return false
-}
-
-// SetAppVersion gets a reference to the given string and assigns it to the AppVersion field.
-func (o *HelmRenderMetadata) SetAppVersion(v string) {
-	o.AppVersion = &v
 }
 
 // GetApiVersions returns the ApiVersions field value
@@ -232,6 +201,30 @@ func (o *HelmRenderMetadata) SetMergedValues(v map[string]interface{}) {
 	o.MergedValues = v
 }
 
+// GetChartMetadata returns the ChartMetadata field value
+func (o *HelmRenderMetadata) GetChartMetadata() HelmChartMetadata {
+	if o == nil {
+		var ret HelmChartMetadata
+		return ret
+	}
+
+	return o.ChartMetadata
+}
+
+// GetChartMetadataOk returns a tuple with the ChartMetadata field value
+// and a boolean to check if the value has been set.
+func (o *HelmRenderMetadata) GetChartMetadataOk() (*HelmChartMetadata, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ChartMetadata, true
+}
+
+// SetChartMetadata sets field value
+func (o *HelmRenderMetadata) SetChartMetadata(v HelmChartMetadata) {
+	o.ChartMetadata = v
+}
+
 func (o HelmRenderMetadata) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -244,13 +237,11 @@ func (o HelmRenderMetadata) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["releaseName"] = o.ReleaseName
 	toSerialize["namespace"] = o.Namespace
-	if !IsNil(o.AppVersion) {
-		toSerialize["appVersion"] = o.AppVersion
-	}
 	toSerialize["apiVersions"] = o.ApiVersions
 	toSerialize["kubeVersion"] = o.KubeVersion
 	toSerialize["helmVersion"] = o.HelmVersion
 	toSerialize["mergedValues"] = o.MergedValues
+	toSerialize["chartMetadata"] = o.ChartMetadata
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -270,6 +261,7 @@ func (o *HelmRenderMetadata) UnmarshalJSON(data []byte) (err error) {
 		"kubeVersion",
 		"helmVersion",
 		"mergedValues",
+		"chartMetadata",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -301,11 +293,11 @@ func (o *HelmRenderMetadata) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "releaseName")
 		delete(additionalProperties, "namespace")
-		delete(additionalProperties, "appVersion")
 		delete(additionalProperties, "apiVersions")
 		delete(additionalProperties, "kubeVersion")
 		delete(additionalProperties, "helmVersion")
 		delete(additionalProperties, "mergedValues")
+		delete(additionalProperties, "chartMetadata")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -8,6 +8,7 @@ docs/ErrorResponse.md
 docs/GitRepositoryPathReference.md
 docs/GitRepositoryReference.md
 docs/HelmAPI.md
+docs/HelmChartMetadata.md
 docs/HelmChartReference.md
 docs/HelmChartRepositoryChartReference.md
 docs/HelmChartRepositoryReference.md
@@ -35,6 +36,7 @@ go.sum
 model_error_response.go
 model_git_repository_path_reference.go
 model_git_repository_reference.go
+model_helm_chart_metadata.go
 model_helm_chart_reference.go
 model_helm_chart_repository_chart_reference.go
 model_helm_chart_repository_reference.go
