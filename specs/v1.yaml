@@ -405,14 +405,29 @@ components:
           type: object
       required:
         - content
+    HelmChartMetadata:
+      type: object
+      properties:
+        name:
+          type: string
+        version:
+          type: string
+        appVersion:
+          type: string
+        dependencies:
+          type: array
+          items:
+            $ref: '#/components/schemas/HelmChartMetadata'
+      required:
+        - name
+        - version
+        - dependencies
     HelmRenderMetadata:
       type: object
       properties:
         releaseName:
           type: string
         namespace:
-          type: string
-        appVersion:
           type: string
         apiVersions:
           items:
@@ -424,6 +439,8 @@ components:
           type: string
         mergedValues:
           type: object
+        chartMetadata:
+          $ref: '#/components/schemas/HelmChartMetadata'
       required:
         - releaseName
         - namespace
@@ -431,6 +448,7 @@ components:
         - kubeVersion
         - helmVersion
         - mergedValues
+        - chartMetadata
     HelmRenderParameters:
       type: object
       properties:
