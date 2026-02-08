@@ -15,11 +15,11 @@ import (
 	"encoding/json"
 )
 
-// checks if the ErrorResponse type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ErrorResponse{}
+// checks if the Error type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Error{}
 
-// ErrorResponse struct for ErrorResponse
-type ErrorResponse struct {
+// Error struct for Error
+type Error struct {
 	Type *string `json:"type,omitempty"`
 	Title *string `json:"title,omitempty"`
 	Status *float32 `json:"status,omitempty"`
@@ -28,27 +28,27 @@ type ErrorResponse struct {
 	AdditionalProperties map[string]interface{}
 }
 
-type _ErrorResponse ErrorResponse
+type _Error Error
 
-// NewErrorResponse instantiates a new ErrorResponse object
+// NewError instantiates a new Error object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewErrorResponse() *ErrorResponse {
-	this := ErrorResponse{}
+func NewError() *Error {
+	this := Error{}
 	return &this
 }
 
-// NewErrorResponseWithDefaults instantiates a new ErrorResponse object
+// NewErrorWithDefaults instantiates a new Error object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewErrorResponseWithDefaults() *ErrorResponse {
-	this := ErrorResponse{}
+func NewErrorWithDefaults() *Error {
+	this := Error{}
 	return &this
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *ErrorResponse) GetType() string {
+func (o *Error) GetType() string {
 	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
@@ -58,7 +58,7 @@ func (o *ErrorResponse) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ErrorResponse) GetTypeOk() (*string, bool) {
+func (o *Error) GetTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *ErrorResponse) GetTypeOk() (*string, bool) {
 }
 
 // HasType returns a boolean if a field has been set.
-func (o *ErrorResponse) HasType() bool {
+func (o *Error) HasType() bool {
 	if o != nil && !IsNil(o.Type) {
 		return true
 	}
@@ -75,12 +75,12 @@ func (o *ErrorResponse) HasType() bool {
 }
 
 // SetType gets a reference to the given string and assigns it to the Type field.
-func (o *ErrorResponse) SetType(v string) {
+func (o *Error) SetType(v string) {
 	o.Type = &v
 }
 
 // GetTitle returns the Title field value if set, zero value otherwise.
-func (o *ErrorResponse) GetTitle() string {
+func (o *Error) GetTitle() string {
 	if o == nil || IsNil(o.Title) {
 		var ret string
 		return ret
@@ -90,7 +90,7 @@ func (o *ErrorResponse) GetTitle() string {
 
 // GetTitleOk returns a tuple with the Title field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ErrorResponse) GetTitleOk() (*string, bool) {
+func (o *Error) GetTitleOk() (*string, bool) {
 	if o == nil || IsNil(o.Title) {
 		return nil, false
 	}
@@ -98,7 +98,7 @@ func (o *ErrorResponse) GetTitleOk() (*string, bool) {
 }
 
 // HasTitle returns a boolean if a field has been set.
-func (o *ErrorResponse) HasTitle() bool {
+func (o *Error) HasTitle() bool {
 	if o != nil && !IsNil(o.Title) {
 		return true
 	}
@@ -107,12 +107,12 @@ func (o *ErrorResponse) HasTitle() bool {
 }
 
 // SetTitle gets a reference to the given string and assigns it to the Title field.
-func (o *ErrorResponse) SetTitle(v string) {
+func (o *Error) SetTitle(v string) {
 	o.Title = &v
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *ErrorResponse) GetStatus() float32 {
+func (o *Error) GetStatus() float32 {
 	if o == nil || IsNil(o.Status) {
 		var ret float32
 		return ret
@@ -122,7 +122,7 @@ func (o *ErrorResponse) GetStatus() float32 {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ErrorResponse) GetStatusOk() (*float32, bool) {
+func (o *Error) GetStatusOk() (*float32, bool) {
 	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
@@ -130,7 +130,7 @@ func (o *ErrorResponse) GetStatusOk() (*float32, bool) {
 }
 
 // HasStatus returns a boolean if a field has been set.
-func (o *ErrorResponse) HasStatus() bool {
+func (o *Error) HasStatus() bool {
 	if o != nil && !IsNil(o.Status) {
 		return true
 	}
@@ -139,12 +139,12 @@ func (o *ErrorResponse) HasStatus() bool {
 }
 
 // SetStatus gets a reference to the given float32 and assigns it to the Status field.
-func (o *ErrorResponse) SetStatus(v float32) {
+func (o *Error) SetStatus(v float32) {
 	o.Status = &v
 }
 
 // GetDetail returns the Detail field value if set, zero value otherwise.
-func (o *ErrorResponse) GetDetail() string {
+func (o *Error) GetDetail() string {
 	if o == nil || IsNil(o.Detail) {
 		var ret string
 		return ret
@@ -154,7 +154,7 @@ func (o *ErrorResponse) GetDetail() string {
 
 // GetDetailOk returns a tuple with the Detail field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ErrorResponse) GetDetailOk() (*string, bool) {
+func (o *Error) GetDetailOk() (*string, bool) {
 	if o == nil || IsNil(o.Detail) {
 		return nil, false
 	}
@@ -162,7 +162,7 @@ func (o *ErrorResponse) GetDetailOk() (*string, bool) {
 }
 
 // HasDetail returns a boolean if a field has been set.
-func (o *ErrorResponse) HasDetail() bool {
+func (o *Error) HasDetail() bool {
 	if o != nil && !IsNil(o.Detail) {
 		return true
 	}
@@ -171,12 +171,12 @@ func (o *ErrorResponse) HasDetail() bool {
 }
 
 // SetDetail gets a reference to the given string and assigns it to the Detail field.
-func (o *ErrorResponse) SetDetail(v string) {
+func (o *Error) SetDetail(v string) {
 	o.Detail = &v
 }
 
 // GetInstance returns the Instance field value if set, zero value otherwise.
-func (o *ErrorResponse) GetInstance() string {
+func (o *Error) GetInstance() string {
 	if o == nil || IsNil(o.Instance) {
 		var ret string
 		return ret
@@ -186,7 +186,7 @@ func (o *ErrorResponse) GetInstance() string {
 
 // GetInstanceOk returns a tuple with the Instance field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ErrorResponse) GetInstanceOk() (*string, bool) {
+func (o *Error) GetInstanceOk() (*string, bool) {
 	if o == nil || IsNil(o.Instance) {
 		return nil, false
 	}
@@ -194,7 +194,7 @@ func (o *ErrorResponse) GetInstanceOk() (*string, bool) {
 }
 
 // HasInstance returns a boolean if a field has been set.
-func (o *ErrorResponse) HasInstance() bool {
+func (o *Error) HasInstance() bool {
 	if o != nil && !IsNil(o.Instance) {
 		return true
 	}
@@ -203,11 +203,11 @@ func (o *ErrorResponse) HasInstance() bool {
 }
 
 // SetInstance gets a reference to the given string and assigns it to the Instance field.
-func (o *ErrorResponse) SetInstance(v string) {
+func (o *Error) SetInstance(v string) {
 	o.Instance = &v
 }
 
-func (o ErrorResponse) MarshalJSON() ([]byte, error) {
+func (o Error) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -215,7 +215,7 @@ func (o ErrorResponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o ErrorResponse) ToMap() (map[string]interface{}, error) {
+func (o Error) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
@@ -240,16 +240,16 @@ func (o ErrorResponse) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ErrorResponse) UnmarshalJSON(data []byte) (err error) {
-	varErrorResponse := _ErrorResponse{}
+func (o *Error) UnmarshalJSON(data []byte) (err error) {
+	varError := _Error{}
 
-	err = json.Unmarshal(data, &varErrorResponse)
+	err = json.Unmarshal(data, &varError)
 
 	if err != nil {
 		return err
 	}
 
-	*o = ErrorResponse(varErrorResponse)
+	*o = Error(varError)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -265,38 +265,38 @@ func (o *ErrorResponse) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableErrorResponse struct {
-	value *ErrorResponse
+type NullableError struct {
+	value *Error
 	isSet bool
 }
 
-func (v NullableErrorResponse) Get() *ErrorResponse {
+func (v NullableError) Get() *Error {
 	return v.value
 }
 
-func (v *NullableErrorResponse) Set(val *ErrorResponse) {
+func (v *NullableError) Set(val *Error) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableErrorResponse) IsSet() bool {
+func (v NullableError) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableErrorResponse) Unset() {
+func (v *NullableError) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableErrorResponse(val *ErrorResponse) *NullableErrorResponse {
-	return &NullableErrorResponse{value: val, isSet: true}
+func NewNullableError(val *Error) *NullableError {
+	return &NullableError{value: val, isSet: true}
 }
 
-func (v NullableErrorResponse) MarshalJSON() ([]byte, error) {
+func (v NullableError) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableErrorResponse) UnmarshalJSON(src []byte) error {
+func (v *NullableError) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

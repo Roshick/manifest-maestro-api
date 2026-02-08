@@ -42,19 +42,19 @@ paths:
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/Error'
           description: Bad request
         "500":
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/Error'
           description: Internal server error
         "502":
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/Error'
           description: Upstream failed to respond
   /rest/api/v1/helm/actions/list-chart-versions:
     post:
@@ -83,19 +83,19 @@ paths:
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/Error'
           description: Bad request
         "500":
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/Error'
           description: Internal server error
         "502":
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/Error'
           description: Upstream failed to respond
   /rest/api/v1/helm/actions/get-chart-metadata:
     post:
@@ -124,25 +124,25 @@ paths:
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/Error'
           description: Bad request
         "422":
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/Error'
           description: Repository is in an unprocessable state
         "500":
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/Error'
           description: Internal server error
         "502":
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/Error'
           description: Upstream failed to respond
   /rest/api/v1/helm/actions/render-chart:
     post:
@@ -171,25 +171,25 @@ paths:
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/Error'
           description: Bad request
         "422":
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/Error'
           description: Repository is in an unprocessable state
         "500":
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/Error'
           description: Internal server error
         "502":
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/Error'
           description: Upstream failed to respond
   /rest/api/v1/kustomize/actions/render-kustomization:
     post:
@@ -218,29 +218,29 @@ paths:
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/Error'
           description: Bad request
         "422":
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/Error'
           description: Repository is in an unprocessable state
         "500":
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/Error'
           description: Internal server error
         "502":
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/Error'
           description: Upstream failed to respond
 components:
   schemas:
-    ErrorResponse:
+    Error:
       type: object
       properties:
         type:

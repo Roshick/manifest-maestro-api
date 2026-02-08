@@ -4,7 +4,7 @@ api_helm.go
 api_kustomize.go
 client.go
 configuration.go
-docs/ErrorResponse.md
+docs/Error.md
 docs/GitRepositoryPathReference.md
 docs/GitRepositoryReference.md
 docs/HelmAPI.md
@@ -33,7 +33,7 @@ docs/KustomizeRenderParameters.md
 docs/Manifest.md
 go.mod
 go.sum
-model_error_response.go
+model_error.go
 model_git_repository_path_reference.go
 model_git_repository_reference.go
 model_helm_chart_metadata.go

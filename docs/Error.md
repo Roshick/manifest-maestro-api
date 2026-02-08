@@ -1,4 +1,4 @@
-# ErrorResponse
+# Error
 
 ## Properties
 
@@ -12,145 +12,145 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewErrorResponse
+### NewError
 
-`func NewErrorResponse() *ErrorResponse`
+`func NewError() *Error`
 
-NewErrorResponse instantiates a new ErrorResponse object
+NewError instantiates a new Error object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewErrorResponseWithDefaults
+### NewErrorWithDefaults
 
-`func NewErrorResponseWithDefaults() *ErrorResponse`
+`func NewErrorWithDefaults() *Error`
 
-NewErrorResponseWithDefaults instantiates a new ErrorResponse object
+NewErrorWithDefaults instantiates a new Error object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *ErrorResponse) GetType() string`
+`func (o *Error) GetType() string`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *ErrorResponse) GetTypeOk() (*string, bool)`
+`func (o *Error) GetTypeOk() (*string, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *ErrorResponse) SetType(v string)`
+`func (o *Error) SetType(v string)`
 
 SetType sets Type field to given value.
 
 ### HasType
 
-`func (o *ErrorResponse) HasType() bool`
+`func (o *Error) HasType() bool`
 
 HasType returns a boolean if a field has been set.
 
 ### GetTitle
 
-`func (o *ErrorResponse) GetTitle() string`
+`func (o *Error) GetTitle() string`
 
 GetTitle returns the Title field if non-nil, zero value otherwise.
 
 ### GetTitleOk
 
-`func (o *ErrorResponse) GetTitleOk() (*string, bool)`
+`func (o *Error) GetTitleOk() (*string, bool)`
 
 GetTitleOk returns a tuple with the Title field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTitle
 
-`func (o *ErrorResponse) SetTitle(v string)`
+`func (o *Error) SetTitle(v string)`
 
 SetTitle sets Title field to given value.
 
 ### HasTitle
 
-`func (o *ErrorResponse) HasTitle() bool`
+`func (o *Error) HasTitle() bool`
 
 HasTitle returns a boolean if a field has been set.
 
 ### GetStatus
 
-`func (o *ErrorResponse) GetStatus() float32`
+`func (o *Error) GetStatus() float32`
 
 GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *ErrorResponse) GetStatusOk() (*float32, bool)`
+`func (o *Error) GetStatusOk() (*float32, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatus
 
-`func (o *ErrorResponse) SetStatus(v float32)`
+`func (o *Error) SetStatus(v float32)`
 
 SetStatus sets Status field to given value.
 
 ### HasStatus
 
-`func (o *ErrorResponse) HasStatus() bool`
+`func (o *Error) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
 
 ### GetDetail
 
-`func (o *ErrorResponse) GetDetail() string`
+`func (o *Error) GetDetail() string`
 
 GetDetail returns the Detail field if non-nil, zero value otherwise.
 
 ### GetDetailOk
 
-`func (o *ErrorResponse) GetDetailOk() (*string, bool)`
+`func (o *Error) GetDetailOk() (*string, bool)`
 
 GetDetailOk returns a tuple with the Detail field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDetail
 
-`func (o *ErrorResponse) SetDetail(v string)`
+`func (o *Error) SetDetail(v string)`
 
 SetDetail sets Detail field to given value.
 
 ### HasDetail
 
-`func (o *ErrorResponse) HasDetail() bool`
+`func (o *Error) HasDetail() bool`
 
 HasDetail returns a boolean if a field has been set.
 
 ### GetInstance
 
-`func (o *ErrorResponse) GetInstance() string`
+`func (o *Error) GetInstance() string`
 
 GetInstance returns the Instance field if non-nil, zero value otherwise.
 
 ### GetInstanceOk
 
-`func (o *ErrorResponse) GetInstanceOk() (*string, bool)`
+`func (o *Error) GetInstanceOk() (*string, bool)`
 
 GetInstanceOk returns a tuple with the Instance field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetInstance
 
-`func (o *ErrorResponse) SetInstance(v string)`
+`func (o *Error) SetInstance(v string)`
 
 SetInstance sets Instance field to given value.
 
 ### HasInstance
 
-`func (o *ErrorResponse) HasInstance() bool`
+`func (o *Error) HasInstance() bool`
 
 HasInstance returns a boolean if a field has been set.
 
