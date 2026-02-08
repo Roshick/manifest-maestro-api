@@ -88,7 +88,7 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [ErrorResponse](docs/ErrorResponse.md)
+ - [Error](docs/Error.md)
  - [GitRepositoryPathReference](docs/GitRepositoryPathReference.md)
  - [GitRepositoryReference](docs/GitRepositoryReference.md)
  - [HelmChartMetadata](docs/HelmChartMetadata.md)
