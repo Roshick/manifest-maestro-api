@@ -244,11 +244,11 @@ components:
   schemas:
     Error:
       example:
-        instance: instance
-        detail: detail
         type: type
         title: title
         status: 0.8008281904610115
+        detail: detail
+        instance: instance
       properties:
         type:
           type: string
@@ -287,9 +287,9 @@ components:
     HelmListChartVersionsAction:
       example:
         reference:
+          repositoryURL: repositoryURL
           chartName: chartName
           chartVersion: chartVersion
-          repositoryURL: repositoryURL
       properties:
         reference:
           $ref: "#/components/schemas/HelmChartReference"
@@ -308,9 +308,9 @@ components:
     HelmGetChartMetadataAction:
       example:
         reference:
+          repositoryURL: repositoryURL
           chartName: chartName
           chartVersion: chartVersion
-          repositoryURL: repositoryURL
       properties:
         reference:
           $ref: "#/components/schemas/HelmChartReference"
@@ -329,32 +329,32 @@ components:
     HelmRenderChartAction:
       example:
         reference:
+          repositoryURL: repositoryURL
           chartName: chartName
           chartVersion: chartVersion
-          repositoryURL: repositoryURL
         parameters:
-          stringValuesFlat:
-          - stringValuesFlat
-          - stringValuesFlat
-          valueFiles:
-          - valueFiles
-          - valueFiles
           releaseName: releaseName
-          values:
-            key: values
-          includeHooks: true
-          complexValues: "{}"
-          stringValues:
-            key: stringValues
-          valuesFlat:
-          - valuesFlat
-          - valuesFlat
+          namespace: namespace
           kubeVersion: kubeVersion
           apiVersions:
           - apiVersions
           - apiVersions
-          namespace: namespace
+          valueFiles:
+          - valueFiles
+          - valueFiles
+          values:
+            key: values
+          valuesFlat:
+          - valuesFlat
+          - valuesFlat
+          stringValues:
+            key: stringValues
+          stringValuesFlat:
+          - stringValuesFlat
+          - stringValuesFlat
+          complexValues: "{}"
           includeCRDs: true
+          includeHooks: true
           ignoreMissingValueFiles: false
       properties:
         reference:
@@ -366,27 +366,27 @@ components:
       type: object
     HelmRenderChartActionResponse:
       example:
-        metadata:
-          chartMetadata:
-            appVersion: appVersion
-            name: name
-            version: version
-            dependencies:
-            - null
-            - null
-          helmVersion: helmVersion
-          kubeVersion: kubeVersion
-          mergedValues: "{}"
-          releaseName: releaseName
-          apiVersions:
-          - apiVersions
-          - apiVersions
-          namespace: namespace
         manifests:
         - source: source
           content: "{}"
         - source: source
           content: "{}"
+        metadata:
+          releaseName: releaseName
+          namespace: namespace
+          apiVersions:
+          - apiVersions
+          - apiVersions
+          kubeVersion: kubeVersion
+          helmVersion: helmVersion
+          mergedValues: "{}"
+          chartMetadata:
+            name: name
+            version: version
+            appVersion: appVersion
+            dependencies:
+            - null
+            - null
       properties:
         manifests:
           items:
@@ -398,9 +398,9 @@ components:
     KustomizeRenderKustomizationAction:
       example:
         reference:
+          repositoryURL: repositoryURL
           reference: reference
           path: path
-          repositoryURL: repositoryURL
         parameters:
           manifestInjections:
           - fileName: fileName
@@ -493,9 +493,9 @@ components:
         required:
         - chartName
       example:
+        repositoryURL: repositoryURL
         chartName: chartName
         chartVersion: chartVersion
-        repositoryURL: repositoryURL
     KustomizationReference:
       $ref: "#/components/schemas/GitRepositoryPathReference"
     GitRepositoryPathReference:
@@ -505,9 +505,9 @@ components:
           path:
             type: string
       example:
+        repositoryURL: repositoryURL
         reference: reference
         path: path
-        repositoryURL: repositoryURL
     Manifest:
       example:
         source: source
@@ -522,9 +522,9 @@ components:
       type: object
     HelmChartMetadata:
       example:
-        appVersion: appVersion
         name: name
         version: version
+        appVersion: appVersion
         dependencies:
         - null
         - null
@@ -546,21 +546,21 @@ components:
       type: object
     HelmRenderMetadata:
       example:
-        chartMetadata:
-          appVersion: appVersion
-          name: name
-          version: version
-          dependencies:
-          - null
-          - null
-        helmVersion: helmVersion
-        kubeVersion: kubeVersion
-        mergedValues: "{}"
         releaseName: releaseName
+        namespace: namespace
         apiVersions:
         - apiVersions
         - apiVersions
-        namespace: namespace
+        kubeVersion: kubeVersion
+        helmVersion: helmVersion
+        mergedValues: "{}"
+        chartMetadata:
+          name: name
+          version: version
+          appVersion: appVersion
+          dependencies:
+          - null
+          - null
       properties:
         releaseName:
           type: string
@@ -589,28 +589,28 @@ components:
       type: object
     HelmRenderParameters:
       example:
-        stringValuesFlat:
-        - stringValuesFlat
-        - stringValuesFlat
-        valueFiles:
-        - valueFiles
-        - valueFiles
         releaseName: releaseName
-        values:
-          key: values
-        includeHooks: true
-        complexValues: "{}"
-        stringValues:
-          key: stringValues
-        valuesFlat:
-        - valuesFlat
-        - valuesFlat
+        namespace: namespace
         kubeVersion: kubeVersion
         apiVersions:
         - apiVersions
         - apiVersions
-        namespace: namespace
+        valueFiles:
+        - valueFiles
+        - valueFiles
+        values:
+          key: values
+        valuesFlat:
+        - valuesFlat
+        - valuesFlat
+        stringValues:
+          key: stringValues
+        stringValuesFlat:
+        - stringValuesFlat
+        - stringValuesFlat
+        complexValues: "{}"
         includeCRDs: true
+        includeHooks: true
         ignoreMissingValueFiles: false
       properties:
         releaseName:
